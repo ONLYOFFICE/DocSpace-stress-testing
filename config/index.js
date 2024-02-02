@@ -1,5 +1,5 @@
 
-const email = "diana@mail.ru";
+const email = "test@onlyoffice.com ";
 const password = "11111111";
 
 export const basePath = 'http://localhost:8092/api/2.0/';

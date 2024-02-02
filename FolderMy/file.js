@@ -1,8 +1,9 @@
 import { auth } from '../config/auth.js';
 import { fastTest } from "../config/options.js";
 import { FileCRUD, createFile, getFile, updateFile, deleteFile, getFolderMyId } from './CRUD.js';
+import { sharedIterations } from '../config/scenarios.js';
 
-export const options = fastTest;
+export const options = sharedIterations;
 
 export function setup() {
     return auth();
