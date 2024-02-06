@@ -13,6 +13,7 @@ export const folderTemplates = `${basePath}files/@templates`;
 export const folderShared = `${basePath}files/@share`;
 export const wizardComplete = `${basePath}settings/wizard/complete`;
 export const authentication = `${basePath}authentication`;
+export const rooms = `${basePath}files/rooms`;
 
 export const authData = { UserName : `${email}`, Password: `${password}`,};
 export const wizardData = { Email : `${email}`, PasswordHash : `${password}`,}
