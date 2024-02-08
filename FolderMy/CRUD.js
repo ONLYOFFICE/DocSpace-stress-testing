@@ -1,6 +1,7 @@
 import http from 'k6/http';
 import { check, group } from 'k6';
 import { folderMy, basePath } from '../config/index.js';
+import faker  from 'https://cdnjs.cloudflare.com/ajax/libs/Faker/3.1.0/faker.min.js';
 
 
 /*------------------------FOLDER------------------------*/
@@ -20,14 +21,15 @@ id - id of folder my
 params - headers 
 */
 export function createFolder(id, params){
+    const folderTitle = faker.random.word();
     const payload = JSON.stringify({
-        title:	"NewFolder",
+        title:	folderTitle,
     });
     let URL = `${basePath}files/folder/${id}`;
     const res = http.post(URL, payload, params);
     check(res, {
         'Cretion folder status': res => res.status === 200,
-        'Folder title': res => res.json().response.title === "NewFolder",
+        'Folder title': res => res.json().response.title === folderTitle,
     });
     return res.json().response.id;
 }
@@ -52,15 +54,16 @@ id - id of folder
 params - headers
 */
 export function updateFolder(id, params){
+    const folderTitle = faker.random.word();
     const payload = JSON.stringify({
-        title: "UpdateTitle",
+        title: folderTitle,
     });
     let URL = `${basePath}files/folder/${id}`;
     const res = http.put(URL, payload, params);
     console.log(res);
     check(res, {
         'Update folder status': res => res.status === 200,
-        'Folder title': res => res.json().response.title === "UpdateTitle",
+        'Folder title': res => res.json().response.title === folderTitle,
     });
 
 }
@@ -110,15 +113,16 @@ id - id of folder my
 params - headers 
 */
 export function createFile(id, params){
+    const fileTitle = faker.system.commonFileName('docx');
     const payload = JSON.stringify({
-        title:	"NewFile.docx",
+        title:	fileTitle,
         EnableExternalExt: true,
     });
     let URL = `${basePath}files/${id}/file`;
     const res = http.post(URL, payload, params);
     check(res, {
         'Cretion file status': res => res.status === 200,
-        'File title': res => res.json().response.title === "NewFile.docx",
+        'File title': res => res.json().response.title === fileTitle,
     });
     return res.json().response.id;
 }
@@ -143,14 +147,15 @@ id - id of file
 params - headers
 */
 export function updateFile(id, params){
+    const fileTitle = faker.system.commonFileName('docx');
     const payload = JSON.stringify({
-        title: "NewTitle.docx",
+        title: fileTitle,
     });
     let URL = `${basePath}files/file/${id}`;
     const res = http.put(URL, payload, params);
     check(res, {
         'Update file status': res => res.status === 200,
-        'File title': res => res.json().response.title === "NewTitle.docx",
+        'File title': res => res.json().response.title === fileTitle,
     });
 
 }

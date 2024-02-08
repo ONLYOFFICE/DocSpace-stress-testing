@@ -1,10 +1,12 @@
 import http from 'k6/http';
 import { check, group } from 'k6';
 import { rooms } from '../config/index.js';
+import faker  from 'https://cdnjs.cloudflare.com/ajax/libs/Faker/3.1.0/faker.min.js';
 
 export function createRoom(params){
+    const roomTitle = faker.random.words();
     const payload = JSON.stringify({
-        Title: "Testing room",
+        Title: roomTitle,
         RoomType: 6,
     });
 
@@ -12,7 +14,7 @@ export function createRoom(params){
     const res = http.post(URL, payload, params);
     check(res, {
         'Cretion room status': res => res.status === 200,
-        'Room title': res => res.json().response.title === "Testing room",
+        'Room title': res => res.json().response.title === roomTitle,
     });
     return res.json().response.id;
 }
@@ -27,14 +29,15 @@ export function getRoomInfo(id, params){
 }
 
 export function renameRoom(id, params){
+    const roomTitle = faker.random.words();
     const payload = JSON.stringify({
-        Title: "New Title",
+        Title: roomTitle,
     });
     let URL = `${rooms}/${id}`;
     const res = http.put(URL, payload, params);
     check(res, {
         'Rename room status': res => res.status === 200,
-        'Room title': res => res.json().response.title === "New Title",
+        'Room title': res => res.json().response.title === roomTitle,
     });
 }
 
