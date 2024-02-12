@@ -75,7 +75,7 @@ params - headers
 */
 export function deleteFolder(id, params){
     const payload = JSON.stringify({
-        DeleteAfter: true,
+        DeleteAfter: false,
         Immediately: true,
     });
     let URL = `${basePath}files/folder/${id}`;
@@ -167,7 +167,7 @@ params - headers
 */
 export function deleteFile(id, params){
     const payload = JSON.stringify({
-        DeleteAfter: true,
+        DeleteAfter: false,
         Immediately: true,
     });
     let URL = `${basePath}files/file/${id}`;

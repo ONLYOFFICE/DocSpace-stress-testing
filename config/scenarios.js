@@ -7,7 +7,7 @@ export const sharedIterations = {
     scenarios: {
         shared_iter_scenario: {
             executor: "shared-iterations",
-            vus: 10,
+            vus: 100,
             iterations: 100,
             startTime: "0s",
           },
