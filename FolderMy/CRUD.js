@@ -86,19 +86,19 @@ export function deleteFolder(id, params){
 export function FolderCRUD(idMy, params) {
     let folderId = null;
 
-    group('1. Create new folder', () => {
+    group('Create folder', () => {
         folderId = createFolder(idMy, params);
     });
 
-    group('2. Get folder info', () => {
+    group('Get folder info', () => {
         getFolder(folderId, params);
     });
 
-    group('3. Update folder title', () => {
+    group('Update folder title', () => {
         updateFolder(folderId, params);
     });
 
-    group('4. Delete folder', () => {
+    group('Delete folder', () => {
         deleteFolder(folderId, params);
     });
 
@@ -178,19 +178,19 @@ export function deleteFile(id, params){
 export function FileCRUD(idMy, params){
     let fileid = null;
 
-    group('1. Create a new file', () => {
+    group('Create file', () => {
         fileid = createFile(idMy, params);
     });
 
-    group('2. Get file info', () => {
+    group('Get file info', () => {
         getFile(fileid, params);
     });
 
-    group('3. Update file title', () => {
+    group('Update file title', () => {
         updateFile(fileid, params);
     });
 
-    group('4. Delete file', () => {
+    group('Delete file', () => {
         deleteFile(fileid, params);
     });
 
