@@ -1,4 +1,65 @@
 {
+  "__inputs": [
+    {
+      "name": "DS_INFLUXDB-1",
+      "label": "influxdb-1",
+      "description": "",
+      "type": "datasource",
+      "pluginId": "influxdb",
+      "pluginName": "InfluxDB"
+    }
+  ],
+  "__elements": {},
+  "__requires": [
+    {
+      "type": "panel",
+      "id": "barchart",
+      "name": "Bar chart",
+      "version": ""
+    },
+    {
+      "type": "grafana",
+      "id": "grafana",
+      "name": "Grafana",
+      "version": "10.3.1"
+    },
+    {
+      "type": "panel",
+      "id": "heatmap",
+      "name": "Heatmap",
+      "version": ""
+    },
+    {
+      "type": "datasource",
+      "id": "influxdb",
+      "name": "InfluxDB",
+      "version": "1.0.0"
+    },
+    {
+      "type": "panel",
+      "id": "piechart",
+      "name": "Pie chart",
+      "version": ""
+    },
+    {
+      "type": "panel",
+      "id": "stat",
+      "name": "Stat",
+      "version": ""
+    },
+    {
+      "type": "panel",
+      "id": "table",
+      "name": "Table",
+      "version": ""
+    },
+    {
+      "type": "panel",
+      "id": "timeseries",
+      "name": "Time series",
+      "version": ""
+    }
+  ],
   "annotations": {
     "list": [
       {
@@ -18,14 +79,27 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 2,
-  "id": 3,
+  "id": null,
   "links": [],
   "liveNow": false,
   "panels": [
     {
+      "collapsed": false,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "id": 98,
+      "panels": [],
+      "title": "All data",
+      "type": "row"
+    },
+    {
       "datasource": {
         "type": "influxdb",
-        "uid": "b2c82ab9-dd39-4c03-9caf-705fc994737d"
+        "uid": "${DS_INFLUXDB-1}"
       },
       "fieldConfig": {
         "defaults": {
@@ -302,7 +376,7 @@
         "h": 8,
         "w": 17,
         "x": 0,
-        "y": 0
+        "y": 1
       },
       "id": 30,
       "options": {
@@ -329,7 +403,7 @@
         {
           "datasource": {
             "type": "influxdb",
-            "uid": "b2c82ab9-dd39-4c03-9caf-705fc994737d"
+            "uid": "${DS_INFLUXDB-1}"
           },
           "groupBy": [
             {
@@ -439,12 +513,18 @@
         }
       ],
       "title": "Requests by URL (by name)",
+      "transformations": [
+        {
+          "id": "organize",
+          "options": {}
+        }
+      ],
       "type": "table"
     },
     {
       "datasource": {
         "type": "influxdb",
-        "uid": "b2c82ab9-dd39-4c03-9caf-705fc994737d"
+        "uid": "${DS_INFLUXDB-1}"
       },
       "fieldConfig": {
         "defaults": {
@@ -494,7 +574,7 @@
         "h": 8,
         "w": 7,
         "x": 17,
-        "y": 0
+        "y": 1
       },
       "id": 19,
       "options": {
@@ -523,7 +603,7 @@
         {
           "datasource": {
             "type": "influxdb",
-            "uid": "b2c82ab9-dd39-4c03-9caf-705fc994737d"
+            "uid": "${DS_INFLUXDB-1}"
           },
           "groupBy": [
             {
@@ -567,7 +647,7 @@
     {
       "datasource": {
         "type": "influxdb",
-        "uid": "b2c82ab9-dd39-4c03-9caf-705fc994737d"
+        "uid": "${DS_INFLUXDB-1}"
       },
       "fieldConfig": {
         "defaults": {
@@ -844,7 +924,7 @@
         "h": 8,
         "w": 24,
         "x": 0,
-        "y": 8
+        "y": 9
       },
       "id": 2,
       "options": {
@@ -871,7 +951,7 @@
         {
           "datasource": {
             "type": "influxdb",
-            "uid": "b2c82ab9-dd39-4c03-9caf-705fc994737d"
+            "uid": "${DS_INFLUXDB-1}"
           },
           "groupBy": [
             {
@@ -986,12 +1066,35 @@
         }
       ],
       "title": "Requests by URL (All)",
+      "transformations": [
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {},
+            "includeByName": {},
+            "indexByName": {
+              "Time": 0,
+              "count": 10,
+              "max": 7,
+              "mean": 8,
+              "median": 6,
+              "method": 3,
+              "min": 5,
+              "name": 1,
+              "percentile": 9,
+              "scenario": 4,
+              "status": 2
+            },
+            "renameByName": {}
+          }
+        }
+      ],
       "type": "table"
     },
     {
       "datasource": {
         "type": "influxdb",
-        "uid": "b2c82ab9-dd39-4c03-9caf-705fc994737d"
+        "uid": "${DS_INFLUXDB-1}"
       },
       "fieldConfig": {
         "defaults": {
@@ -1109,7 +1212,7 @@
         "h": 7,
         "w": 7,
         "x": 0,
-        "y": 16
+        "y": 17
       },
       "id": 31,
       "options": {
@@ -1135,7 +1238,7 @@
           "alias": "min",
           "datasource": {
             "type": "influxdb",
-            "uid": "b2c82ab9-dd39-4c03-9caf-705fc994737d"
+            "uid": "${DS_INFLUXDB-1}"
           },
           "groupBy": [
             {
@@ -1155,7 +1258,7 @@
           "measurement": "checks",
           "orderByTime": "ASC",
           "policy": "default",
-          "query": "SELECT sum(\"value\"), count(\"value\") FROM \"checks\" WHERE $timeFilter GROUP BY \"check\", \"scenario\"::tag",
+          "query": "SELECT sum(\"value\"), count(\"value\") FROM \"checks\" WHERE $timeFilter GROUP BY \"check\"",
           "rawQuery": true,
           "refId": "A",
           "resultFormat": "table",
@@ -1176,7 +1279,7 @@
           "tags": []
         }
       ],
-      "title": "Checks (by scenario)",
+      "title": "Checks (all)",
       "transformations": [
         {
           "id": "calculateField",
@@ -1220,7 +1323,7 @@
     {
       "datasource": {
         "type": "influxdb",
-        "uid": "b2c82ab9-dd39-4c03-9caf-705fc994737d"
+        "uid": "${DS_INFLUXDB-1}"
       },
       "fieldConfig": {
         "defaults": {
@@ -1273,6 +1376,7 @@
               }
             ]
           },
+          "unit": "ms",
           "unitScale": true
         },
         "overrides": []
@@ -1281,7 +1385,7 @@
         "h": 7,
         "w": 7,
         "x": 7,
-        "y": 16
+        "y": 17
       },
       "id": 78,
       "options": {
@@ -1303,7 +1407,7 @@
         {
           "datasource": {
             "type": "influxdb",
-            "uid": "b2c82ab9-dd39-4c03-9caf-705fc994737d"
+            "uid": "${DS_INFLUXDB-1}"
           },
           "groupBy": [
             {
@@ -1361,7 +1465,7 @@
     {
       "datasource": {
         "type": "influxdb",
-        "uid": "b2c82ab9-dd39-4c03-9caf-705fc994737d"
+        "uid": "${DS_INFLUXDB-1}"
       },
       "fieldConfig": {
         "defaults": {
@@ -1384,7 +1488,7 @@
         "h": 7,
         "w": 10,
         "x": 14,
-        "y": 16
+        "y": 17
       },
       "id": 79,
       "options": {
@@ -1426,7 +1530,7 @@
         {
           "datasource": {
             "type": "influxdb",
-            "uid": "b2c82ab9-dd39-4c03-9caf-705fc994737d"
+            "uid": "${DS_INFLUXDB-1}"
           },
           "groupBy": [
             {
@@ -1483,24 +1587,577 @@
       "type": "heatmap"
     },
     {
+      "datasource": {
+        "type": "influxdb",
+        "uid": "${DS_INFLUXDB-1}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "ms",
+          "unitScale": true
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 24,
+        "x": 0,
+        "y": 24
+      },
+      "id": 508,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "${DS_INFLUXDB-1}"
+          },
+          "groupBy": [],
+          "measurement": "iteration_duration",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              }
+            ]
+          ]
+        }
+      ],
+      "title": "Iteration duration",
+      "type": "timeseries"
+    },
+    {
       "collapsed": false,
       "gridPos": {
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 23
+        "y": 32
       },
-      "id": 3,
+      "id": 444,
       "panels": [],
-      "repeat": "Measurement",
-      "repeatDirection": "h",
-      "title": "$Measurement",
+      "title": "Comparison of sccenarios",
       "type": "row"
     },
     {
       "datasource": {
         "type": "influxdb",
-        "uid": "b2c82ab9-dd39-4c03-9caf-705fc994737d"
+        "uid": "${DS_INFLUXDB-1}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "align": "auto",
+            "cellOptions": {
+              "type": "auto"
+            },
+            "filterable": false,
+            "inspect": false
+          },
+          "mappings": [
+            {
+              "options": {
+                "\"undefined\"": {
+                  "index": 2,
+                  "text": "-"
+                },
+                "null": {
+                  "index": 1,
+                  "text": "-"
+                },
+                "undefined": {
+                  "index": 0,
+                  "text": "-"
+                }
+              },
+              "type": "value"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unitScale": true
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "VUS"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 73
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Duration"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 105
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Start Time"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 120
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Graceful Stop"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 135
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 24,
+        "x": 0,
+        "y": 33
+      },
+      "id": 366,
+      "options": {
+        "cellHeight": "sm",
+        "footer": {
+          "countRows": false,
+          "fields": "",
+          "reducer": [
+            "sum"
+          ],
+          "show": false
+        },
+        "showHeader": true,
+        "sortBy": []
+      },
+      "pluginVersion": "10.3.1",
+      "targets": [
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "${DS_INFLUXDB-1}"
+          },
+          "groupBy": [
+            {
+              "params": [
+                "scenario_duration::tag"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "scenario_exec::tag"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "scenario_executor::tag"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "scenario_gracefulStop::tag"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "scenario_startTime::tag"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "scenario_vus::tag"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "scenario_gracefulRampDown::tag"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "scenario_iterations::tag"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "scenario_maxDuration::tag"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "scenario_maxVUs::tag"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "scenario_preAllocatedVUs::tag"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "scenario_rate::tag"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "scenario_stages::tag"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "scenario_startRate::tag"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "scenario_startVUs::tag"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "scenario_timeUnit::tag"
+              ],
+              "type": "tag"
+            }
+          ],
+          "measurement": "/^$Measurement$/",
+          "orderByTime": "DESC",
+          "policy": "default",
+          "query": "SELECT count(\"value\") FROM /^$Measurement$/ WHERE $timeFilter, fill(null) GROUP BY \"scenario_duration\"::tag, \"scenario_exec\"::tag, \"scenario_executor\"::tag, \"scenario_gracefulStop\"::tag, \"scenario_startTime\"::tag, \"scenario_vus\"::tag fill(null)",
+          "rawQuery": false,
+          "refId": "A",
+          "resultFormat": "table",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "count"
+              }
+            ]
+          ],
+          "tags": []
+        }
+      ],
+      "title": "Scenario data",
+      "transformations": [
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              "Time": true,
+              "count": true,
+              "scenario_duration": false,
+              "scenario_exec": false,
+              "scenario_executor": false,
+              "scenario_gracefulStop": false,
+              "scenario_startTime": false,
+              "scenario_vus": false
+            },
+            "includeByName": {},
+            "indexByName": {
+              "Time": 0,
+              "count": 8,
+              "scenario_duration": 3,
+              "scenario_exec": 7,
+              "scenario_executor": 1,
+              "scenario_gracefulRampDown": 12,
+              "scenario_gracefulStop": 6,
+              "scenario_iterations": 4,
+              "scenario_maxDuration": 9,
+              "scenario_maxVUs": 10,
+              "scenario_preAllocatedVUs": 15,
+              "scenario_rate": 16,
+              "scenario_stages": 13,
+              "scenario_startRate": 14,
+              "scenario_startTime": 5,
+              "scenario_startVUs": 11,
+              "scenario_timeUnit": 17,
+              "scenario_vus": 2
+            },
+            "renameByName": {
+              "scenario_duration": "Duration",
+              "scenario_exec": "Exec",
+              "scenario_executor": "Executor",
+              "scenario_gracefulRampDown": "Graceful RampDown",
+              "scenario_gracefulStop": "Graceful Stop",
+              "scenario_iterations": "Iterations",
+              "scenario_maxDuration": "Max duration",
+              "scenario_maxVUs": "Max VUs",
+              "scenario_preAllocatedVUs": "PreAllocated VUs",
+              "scenario_rate": "Rate",
+              "scenario_stages": "Stages",
+              "scenario_startRate": "Start rate",
+              "scenario_startTime": "Start Time",
+              "scenario_startVUs": "Start VUs",
+              "scenario_timeUnit": "Time Unit",
+              "scenario_vus": "VUS"
+            }
+          }
+        },
+        {
+          "id": "groupBy",
+          "options": {
+            "fields": {
+              "Duration": {
+                "aggregations": [],
+                "operation": "groupby"
+              },
+              "Exec": {
+                "aggregations": [],
+                "operation": "groupby"
+              },
+              "Executor": {
+                "aggregations": [],
+                "operation": "groupby"
+              },
+              "Graceful RampDown": {
+                "aggregations": [],
+                "operation": "groupby"
+              },
+              "Graceful Stop": {
+                "aggregations": [],
+                "operation": "groupby"
+              },
+              "Iterations": {
+                "aggregations": [],
+                "operation": "groupby"
+              },
+              "Max VUs": {
+                "aggregations": [],
+                "operation": "groupby"
+              },
+              "Max duration": {
+                "aggregations": [],
+                "operation": "groupby"
+              },
+              "PreAllocated VUs": {
+                "aggregations": [],
+                "operation": "groupby"
+              },
+              "Rate": {
+                "aggregations": [],
+                "operation": "groupby"
+              },
+              "Stages": {
+                "aggregations": [],
+                "operation": "groupby"
+              },
+              "Start Time": {
+                "aggregations": [],
+                "operation": "groupby"
+              },
+              "Start VUs": {
+                "aggregations": [],
+                "operation": "groupby"
+              },
+              "Start rate": {
+                "aggregations": [],
+                "operation": "groupby"
+              },
+              "Time Unit": {
+                "aggregations": [],
+                "operation": "groupby"
+              },
+              "VUS": {
+                "aggregations": [],
+                "operation": "groupby"
+              },
+              "scenario_duration": {
+                "aggregations": [],
+                "operation": "groupby"
+              },
+              "scenario_exec": {
+                "aggregations": [],
+                "operation": "groupby"
+              },
+              "scenario_executor": {
+                "aggregations": [
+                  "sum"
+                ],
+                "operation": "groupby"
+              },
+              "scenario_gracefulRampDown": {
+                "aggregations": [],
+                "operation": "groupby"
+              },
+              "scenario_gracefulStop": {
+                "aggregations": [],
+                "operation": "groupby"
+              },
+              "scenario_iterations": {
+                "aggregations": [],
+                "operation": "groupby"
+              },
+              "scenario_maxDuration": {
+                "aggregations": [],
+                "operation": "groupby"
+              },
+              "scenario_maxVUs": {
+                "aggregations": [],
+                "operation": "groupby"
+              },
+              "scenario_preAllocatedVUs": {
+                "aggregations": [],
+                "operation": "groupby"
+              },
+              "scenario_rate": {
+                "aggregations": [],
+                "operation": "groupby"
+              },
+              "scenario_stages": {
+                "aggregations": [],
+                "operation": "groupby"
+              },
+              "scenario_startRate": {
+                "aggregations": [],
+                "operation": "groupby"
+              },
+              "scenario_startTime": {
+                "aggregations": [],
+                "operation": "groupby"
+              },
+              "scenario_startVUs": {
+                "aggregations": [],
+                "operation": "groupby"
+              },
+              "scenario_timeUnit": {
+                "aggregations": [],
+                "operation": "groupby"
+              },
+              "scenario_vus": {
+                "aggregations": [],
+                "operation": "groupby"
+              }
+            }
+          }
+        }
+      ],
+      "type": "table"
+    },
+    {
+      "datasource": {
+        "type": "influxdb",
+        "uid": "${DS_INFLUXDB-1}"
       },
       "fieldConfig": {
         "defaults": {
@@ -1585,7 +2242,7 @@
         "h": 8,
         "w": 24,
         "x": 0,
-        "y": 24
+        "y": 42
       },
       "id": 81,
       "options": {
@@ -1605,7 +2262,7 @@
         {
           "datasource": {
             "type": "influxdb",
-            "uid": "b2c82ab9-dd39-4c03-9caf-705fc994737d"
+            "uid": "${DS_INFLUXDB-1}"
           },
           "groupBy": [
             {
@@ -1706,7 +2363,7 @@
     {
       "datasource": {
         "type": "influxdb",
-        "uid": "b2c82ab9-dd39-4c03-9caf-705fc994737d"
+        "uid": "${DS_INFLUXDB-1}"
       },
       "fieldConfig": {
         "defaults": {
@@ -1728,15 +2385,14 @@
           {
             "matcher": {
               "id": "byName",
-              "options": "method: POST, scenario: "
+              "options": "ext_controlled_scenario"
             },
             "properties": [
               {
-                "id": "custom.hideFrom",
+                "id": "color",
                 "value": {
-                  "legend": true,
-                  "tooltip": true,
-                  "viz": true
+                  "fixedColor": "light-purple",
+                  "mode": "fixed"
                 }
               }
             ]
@@ -1747,7 +2403,7 @@
         "h": 8,
         "w": 6,
         "x": 0,
-        "y": 32
+        "y": 50
       },
       "id": 82,
       "options": {
@@ -1779,26 +2435,185 @@
         {
           "datasource": {
             "type": "influxdb",
-            "uid": "b2c82ab9-dd39-4c03-9caf-705fc994737d"
+            "uid": "${DS_INFLUXDB-1}"
           },
-          "groupBy": [
-            {
-              "params": [
-                "scenario::tag"
-              ],
-              "type": "tag"
-            },
-            {
-              "params": [
-                "method::tag"
-              ],
-              "type": "tag"
-            }
-          ],
-          "measurement": "/^$Measurement$/",
+          "groupBy": [],
+          "measurement": "const_vus_scenario",
           "orderByTime": "ASC",
           "policy": "default",
           "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "condition": "AND",
+              "key": "method::tag",
+              "operator": "=",
+              "value": "POST"
+            }
+          ]
+        },
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "${DS_INFLUXDB-1}"
+          },
+          "groupBy": [],
+          "hide": false,
+          "measurement": "per_vu_scenario",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "B",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "method::tag",
+              "operator": "=",
+              "value": "POST"
+            }
+          ]
+        },
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "${DS_INFLUXDB-1}"
+          },
+          "groupBy": [],
+          "hide": false,
+          "measurement": "shared_iter_scenario",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "C",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "condition": "AND",
+              "key": "method::tag",
+              "operator": "=",
+              "value": "POST"
+            }
+          ]
+        },
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "${DS_INFLUXDB-1}"
+          },
+          "groupBy": [],
+          "hide": false,
+          "measurement": "const_arrival_rate_scenario",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "D",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "method::tag",
+              "operator": "=",
+              "value": "POST"
+            }
+          ]
+        },
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "${DS_INFLUXDB-1}"
+          },
+          "groupBy": [],
+          "hide": false,
+          "measurement": "ramp_arrival_rate_scenario",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "E",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "method::tag",
+              "operator": "=",
+              "value": "POST"
+            }
+          ]
+        },
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "${DS_INFLUXDB-1}"
+          },
+          "groupBy": [],
+          "hide": false,
+          "measurement": "ext_controlled_scenario",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "F",
           "resultFormat": "time_series",
           "select": [
             [
@@ -1823,12 +2638,12 @@
           ]
         }
       ],
-      "title": "POST(mean)",
+      "title": "Comparison of scenarios (mean time, method POST)",
       "transformations": [
         {
           "id": "renameByRegex",
           "options": {
-            "regex": "http_req_duration.mean { (.*) }",
+            "regex": "(.*).mean",
             "renamePattern": "$1"
           }
         }
@@ -1838,7 +2653,7 @@
     {
       "datasource": {
         "type": "influxdb",
-        "uid": "b2c82ab9-dd39-4c03-9caf-705fc994737d"
+        "uid": "${DS_INFLUXDB-1}"
       },
       "fieldConfig": {
         "defaults": {
@@ -1860,15 +2675,14 @@
           {
             "matcher": {
               "id": "byName",
-              "options": "scenario: "
+              "options": "ext_controlled_scenario"
             },
             "properties": [
               {
-                "id": "custom.hideFrom",
+                "id": "color",
                 "value": {
-                  "legend": true,
-                  "tooltip": true,
-                  "viz": true
+                  "fixedColor": "light-purple",
+                  "mode": "fixed"
                 }
               }
             ]
@@ -1879,9 +2693,9 @@
         "h": 8,
         "w": 6,
         "x": 6,
-        "y": 32
+        "y": 50
       },
-      "id": 86,
+      "id": 469,
       "options": {
         "displayLabels": [
           "value"
@@ -1911,26 +2725,185 @@
         {
           "datasource": {
             "type": "influxdb",
-            "uid": "b2c82ab9-dd39-4c03-9caf-705fc994737d"
+            "uid": "${DS_INFLUXDB-1}"
           },
-          "groupBy": [
-            {
-              "params": [
-                "scenario::tag"
-              ],
-              "type": "tag"
-            },
-            {
-              "params": [
-                "method::tag"
-              ],
-              "type": "tag"
-            }
-          ],
-          "measurement": "/^$Measurement$/",
+          "groupBy": [],
+          "measurement": "const_vus_scenario",
           "orderByTime": "ASC",
           "policy": "default",
           "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "condition": "AND",
+              "key": "method::tag",
+              "operator": "=",
+              "value": "PUT"
+            }
+          ]
+        },
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "${DS_INFLUXDB-1}"
+          },
+          "groupBy": [],
+          "hide": false,
+          "measurement": "per_vu_scenario",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "B",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "method::tag",
+              "operator": "=",
+              "value": "PUT"
+            }
+          ]
+        },
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "${DS_INFLUXDB-1}"
+          },
+          "groupBy": [],
+          "hide": false,
+          "measurement": "shared_iter_scenario",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "C",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "condition": "AND",
+              "key": "method::tag",
+              "operator": "=",
+              "value": "PUT"
+            }
+          ]
+        },
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "${DS_INFLUXDB-1}"
+          },
+          "groupBy": [],
+          "hide": false,
+          "measurement": "const_arrival_rate_scenario",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "D",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "method::tag",
+              "operator": "=",
+              "value": "PUT"
+            }
+          ]
+        },
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "${DS_INFLUXDB-1}"
+          },
+          "groupBy": [],
+          "hide": false,
+          "measurement": "ramp_arrival_rate_scenario",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "E",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "method::tag",
+              "operator": "=",
+              "value": "PUT"
+            }
+          ]
+        },
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "${DS_INFLUXDB-1}"
+          },
+          "groupBy": [],
+          "hide": false,
+          "measurement": "ext_controlled_scenario",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "F",
           "resultFormat": "time_series",
           "select": [
             [
@@ -1955,12 +2928,12 @@
           ]
         }
       ],
-      "title": "PUT(mean)",
+      "title": "Comparison of scenarios (mean time, method PUT)",
       "transformations": [
         {
           "id": "renameByRegex",
           "options": {
-            "regex": "http_req_duration.mean { (.*) }",
+            "regex": "(.*).mean",
             "renamePattern": "$1"
           }
         }
@@ -1970,7 +2943,7 @@
     {
       "datasource": {
         "type": "influxdb",
-        "uid": "b2c82ab9-dd39-4c03-9caf-705fc994737d"
+        "uid": "${DS_INFLUXDB-1}"
       },
       "fieldConfig": {
         "defaults": {
@@ -1992,15 +2965,14 @@
           {
             "matcher": {
               "id": "byName",
-              "options": "method: GET, scenario: "
+              "options": "ext_controlled_scenario"
             },
             "properties": [
               {
-                "id": "custom.hideFrom",
+                "id": "color",
                 "value": {
-                  "legend": true,
-                  "tooltip": true,
-                  "viz": true
+                  "fixedColor": "light-purple",
+                  "mode": "fixed"
                 }
               }
             ]
@@ -2011,9 +2983,9 @@
         "h": 8,
         "w": 6,
         "x": 12,
-        "y": 32
+        "y": 50
       },
-      "id": 87,
+      "id": 470,
       "options": {
         "displayLabels": [
           "value"
@@ -2043,26 +3015,185 @@
         {
           "datasource": {
             "type": "influxdb",
-            "uid": "b2c82ab9-dd39-4c03-9caf-705fc994737d"
+            "uid": "${DS_INFLUXDB-1}"
           },
-          "groupBy": [
-            {
-              "params": [
-                "scenario::tag"
-              ],
-              "type": "tag"
-            },
-            {
-              "params": [
-                "method::tag"
-              ],
-              "type": "tag"
-            }
-          ],
-          "measurement": "/^$Measurement$/",
+          "groupBy": [],
+          "measurement": "const_vus_scenario",
           "orderByTime": "ASC",
           "policy": "default",
           "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "condition": "AND",
+              "key": "method::tag",
+              "operator": "=",
+              "value": "GET"
+            }
+          ]
+        },
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "${DS_INFLUXDB-1}"
+          },
+          "groupBy": [],
+          "hide": false,
+          "measurement": "per_vu_scenario",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "B",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "method::tag",
+              "operator": "=",
+              "value": "GET"
+            }
+          ]
+        },
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "${DS_INFLUXDB-1}"
+          },
+          "groupBy": [],
+          "hide": false,
+          "measurement": "shared_iter_scenario",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "C",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "condition": "AND",
+              "key": "method::tag",
+              "operator": "=",
+              "value": "GET"
+            }
+          ]
+        },
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "${DS_INFLUXDB-1}"
+          },
+          "groupBy": [],
+          "hide": false,
+          "measurement": "const_arrival_rate_scenario",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "D",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "method::tag",
+              "operator": "=",
+              "value": "GET"
+            }
+          ]
+        },
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "${DS_INFLUXDB-1}"
+          },
+          "groupBy": [],
+          "hide": false,
+          "measurement": "ramp_arrival_rate_scenario",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "E",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "method::tag",
+              "operator": "=",
+              "value": "GET"
+            }
+          ]
+        },
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "${DS_INFLUXDB-1}"
+          },
+          "groupBy": [],
+          "hide": false,
+          "measurement": "ext_controlled_scenario",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "F",
           "resultFormat": "time_series",
           "select": [
             [
@@ -2087,12 +3218,12 @@
           ]
         }
       ],
-      "title": "GET(mean)",
+      "title": "Comparison of scenarios (mean time, method GET)",
       "transformations": [
         {
           "id": "renameByRegex",
           "options": {
-            "regex": "http_req_duration.mean { (.*) }",
+            "regex": "(.*).mean",
             "renamePattern": "$1"
           }
         }
@@ -2102,7 +3233,7 @@
     {
       "datasource": {
         "type": "influxdb",
-        "uid": "b2c82ab9-dd39-4c03-9caf-705fc994737d"
+        "uid": "${DS_INFLUXDB-1}"
       },
       "fieldConfig": {
         "defaults": {
@@ -2124,15 +3255,14 @@
           {
             "matcher": {
               "id": "byName",
-              "options": "scenario: "
+              "options": "ext_controlled_scenario"
             },
             "properties": [
               {
-                "id": "custom.hideFrom",
+                "id": "color",
                 "value": {
-                  "legend": true,
-                  "tooltip": true,
-                  "viz": true
+                  "fixedColor": "light-purple",
+                  "mode": "fixed"
                 }
               }
             ]
@@ -2143,9 +3273,9 @@
         "h": 8,
         "w": 6,
         "x": 18,
-        "y": 32
+        "y": 50
       },
-      "id": 88,
+      "id": 471,
       "options": {
         "displayLabels": [
           "value"
@@ -2175,26 +3305,185 @@
         {
           "datasource": {
             "type": "influxdb",
-            "uid": "b2c82ab9-dd39-4c03-9caf-705fc994737d"
+            "uid": "${DS_INFLUXDB-1}"
           },
-          "groupBy": [
-            {
-              "params": [
-                "scenario::tag"
-              ],
-              "type": "tag"
-            },
-            {
-              "params": [
-                "method::tag"
-              ],
-              "type": "tag"
-            }
-          ],
-          "measurement": "/^$Measurement$/",
+          "groupBy": [],
+          "measurement": "const_vus_scenario",
           "orderByTime": "ASC",
           "policy": "default",
           "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "condition": "AND",
+              "key": "method::tag",
+              "operator": "=",
+              "value": "DELETE"
+            }
+          ]
+        },
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "${DS_INFLUXDB-1}"
+          },
+          "groupBy": [],
+          "hide": false,
+          "measurement": "per_vu_scenario",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "B",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "method::tag",
+              "operator": "=",
+              "value": "DELETE"
+            }
+          ]
+        },
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "${DS_INFLUXDB-1}"
+          },
+          "groupBy": [],
+          "hide": false,
+          "measurement": "shared_iter_scenario",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "C",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "condition": "AND",
+              "key": "method::tag",
+              "operator": "=",
+              "value": "DELETE"
+            }
+          ]
+        },
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "${DS_INFLUXDB-1}"
+          },
+          "groupBy": [],
+          "hide": false,
+          "measurement": "const_arrival_rate_scenario",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "D",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "method::tag",
+              "operator": "=",
+              "value": "DELETE"
+            }
+          ]
+        },
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "${DS_INFLUXDB-1}"
+          },
+          "groupBy": [],
+          "hide": false,
+          "measurement": "ramp_arrival_rate_scenario",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "E",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "method::tag",
+              "operator": "=",
+              "value": "DELETE"
+            }
+          ]
+        },
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "${DS_INFLUXDB-1}"
+          },
+          "groupBy": [],
+          "hide": false,
+          "measurement": "ext_controlled_scenario",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "F",
           "resultFormat": "time_series",
           "select": [
             [
@@ -2219,12 +3508,12 @@
           ]
         }
       ],
-      "title": "DELETE(mean)",
+      "title": "Comparison of scenarios (mean time, method DELETE)",
       "transformations": [
         {
           "id": "renameByRegex",
           "options": {
-            "regex": "http_req_duration.mean { (.*) }",
+            "regex": "(.*).mean",
             "renamePattern": "$1"
           }
         }
@@ -2234,7 +3523,7 @@
     {
       "datasource": {
         "type": "influxdb",
-        "uid": "b2c82ab9-dd39-4c03-9caf-705fc994737d"
+        "uid": "${DS_INFLUXDB-1}"
       },
       "fieldConfig": {
         "defaults": {
@@ -2256,31 +3545,14 @@
           {
             "matcher": {
               "id": "byName",
-              "options": "scenario: , method: POST"
+              "options": "ext_controlled_scenario"
             },
             "properties": [
               {
-                "id": "custom.hideFrom",
+                "id": "color",
                 "value": {
-                  "legend": true,
-                  "tooltip": true,
-                  "viz": true
-                }
-              }
-            ]
-          },
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "method: POST, scenario: "
-            },
-            "properties": [
-              {
-                "id": "custom.hideFrom",
-                "value": {
-                  "legend": true,
-                  "tooltip": true,
-                  "viz": true
+                  "fixedColor": "light-purple",
+                  "mode": "fixed"
                 }
               }
             ]
@@ -2291,9 +3563,9 @@
         "h": 8,
         "w": 6,
         "x": 0,
-        "y": 40
+        "y": 58
       },
-      "id": 83,
+      "id": 472,
       "options": {
         "displayLabels": [
           "value"
@@ -2323,26 +3595,185 @@
         {
           "datasource": {
             "type": "influxdb",
-            "uid": "b2c82ab9-dd39-4c03-9caf-705fc994737d"
+            "uid": "${DS_INFLUXDB-1}"
           },
-          "groupBy": [
-            {
-              "params": [
-                "scenario::tag"
-              ],
-              "type": "tag"
-            },
-            {
-              "params": [
-                "method::tag"
-              ],
-              "type": "tag"
-            }
-          ],
-          "measurement": "/^$Measurement$/",
+          "groupBy": [],
+          "measurement": "const_vus_scenario",
           "orderByTime": "ASC",
           "policy": "default",
           "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "max"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "condition": "AND",
+              "key": "method::tag",
+              "operator": "=",
+              "value": "POST"
+            }
+          ]
+        },
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "${DS_INFLUXDB-1}"
+          },
+          "groupBy": [],
+          "hide": false,
+          "measurement": "per_vu_scenario",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "B",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "max"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "method::tag",
+              "operator": "=",
+              "value": "POST"
+            }
+          ]
+        },
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "${DS_INFLUXDB-1}"
+          },
+          "groupBy": [],
+          "hide": false,
+          "measurement": "shared_iter_scenario",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "C",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "max"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "condition": "AND",
+              "key": "method::tag",
+              "operator": "=",
+              "value": "POST"
+            }
+          ]
+        },
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "${DS_INFLUXDB-1}"
+          },
+          "groupBy": [],
+          "hide": false,
+          "measurement": "const_arrival_rate_scenario",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "D",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "max"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "method::tag",
+              "operator": "=",
+              "value": "POST"
+            }
+          ]
+        },
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "${DS_INFLUXDB-1}"
+          },
+          "groupBy": [],
+          "hide": false,
+          "measurement": "ramp_arrival_rate_scenario",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "E",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "max"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "method::tag",
+              "operator": "=",
+              "value": "POST"
+            }
+          ]
+        },
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "${DS_INFLUXDB-1}"
+          },
+          "groupBy": [],
+          "hide": false,
+          "measurement": "ext_controlled_scenario",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "F",
           "resultFormat": "time_series",
           "select": [
             [
@@ -2367,12 +3798,12 @@
           ]
         }
       ],
-      "title": "POST(max)",
+      "title": "Comparison of scenarios (max time, method POST)",
       "transformations": [
         {
           "id": "renameByRegex",
           "options": {
-            "regex": "http_req_duration.max { (.*) }",
+            "regex": "(.*).max",
             "renamePattern": "$1"
           }
         }
@@ -2382,7 +3813,7 @@
     {
       "datasource": {
         "type": "influxdb",
-        "uid": "b2c82ab9-dd39-4c03-9caf-705fc994737d"
+        "uid": "${DS_INFLUXDB-1}"
       },
       "fieldConfig": {
         "defaults": {
@@ -2404,15 +3835,14 @@
           {
             "matcher": {
               "id": "byName",
-              "options": "scenario: "
+              "options": "ext_controlled_scenario"
             },
             "properties": [
               {
-                "id": "custom.hideFrom",
+                "id": "color",
                 "value": {
-                  "legend": true,
-                  "tooltip": true,
-                  "viz": true
+                  "fixedColor": "light-purple",
+                  "mode": "fixed"
                 }
               }
             ]
@@ -2423,9 +3853,9 @@
         "h": 8,
         "w": 6,
         "x": 6,
-        "y": 40
+        "y": 58
       },
-      "id": 89,
+      "id": 473,
       "options": {
         "displayLabels": [
           "value"
@@ -2455,23 +3885,10 @@
         {
           "datasource": {
             "type": "influxdb",
-            "uid": "b2c82ab9-dd39-4c03-9caf-705fc994737d"
+            "uid": "${DS_INFLUXDB-1}"
           },
-          "groupBy": [
-            {
-              "params": [
-                "scenario::tag"
-              ],
-              "type": "tag"
-            },
-            {
-              "params": [
-                "method::tag"
-              ],
-              "type": "tag"
-            }
-          ],
-          "measurement": "/^$Measurement$/",
+          "groupBy": [],
+          "measurement": "const_vus_scenario",
           "orderByTime": "ASC",
           "policy": "default",
           "refId": "A",
@@ -2497,14 +3914,185 @@
               "value": "PUT"
             }
           ]
+        },
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "${DS_INFLUXDB-1}"
+          },
+          "groupBy": [],
+          "hide": false,
+          "measurement": "per_vu_scenario",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "B",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "max"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "method::tag",
+              "operator": "=",
+              "value": "PUT"
+            }
+          ]
+        },
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "${DS_INFLUXDB-1}"
+          },
+          "groupBy": [],
+          "hide": false,
+          "measurement": "shared_iter_scenario",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "C",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "max"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "condition": "AND",
+              "key": "method::tag",
+              "operator": "=",
+              "value": "PUT"
+            }
+          ]
+        },
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "${DS_INFLUXDB-1}"
+          },
+          "groupBy": [],
+          "hide": false,
+          "measurement": "const_arrival_rate_scenario",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "D",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "max"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "method::tag",
+              "operator": "=",
+              "value": "PUT"
+            }
+          ]
+        },
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "${DS_INFLUXDB-1}"
+          },
+          "groupBy": [],
+          "hide": false,
+          "measurement": "ramp_arrival_rate_scenario",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "E",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "max"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "method::tag",
+              "operator": "=",
+              "value": "PUT"
+            }
+          ]
+        },
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "${DS_INFLUXDB-1}"
+          },
+          "groupBy": [],
+          "hide": false,
+          "measurement": "ext_controlled_scenario",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "F",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "max"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "method::tag",
+              "operator": "=",
+              "value": "PUT"
+            }
+          ]
         }
       ],
-      "title": "PUT(max)",
+      "title": "Comparison of scenarios (max time, method PUT)",
       "transformations": [
         {
           "id": "renameByRegex",
           "options": {
-            "regex": "http_req_duration.max { (.*) }",
+            "regex": "(.*).max",
             "renamePattern": "$1"
           }
         }
@@ -2514,7 +4102,7 @@
     {
       "datasource": {
         "type": "influxdb",
-        "uid": "b2c82ab9-dd39-4c03-9caf-705fc994737d"
+        "uid": "${DS_INFLUXDB-1}"
       },
       "fieldConfig": {
         "defaults": {
@@ -2536,15 +4124,14 @@
           {
             "matcher": {
               "id": "byName",
-              "options": "method: GET, scenario: "
+              "options": "ext_controlled_scenario"
             },
             "properties": [
               {
-                "id": "custom.hideFrom",
+                "id": "color",
                 "value": {
-                  "legend": true,
-                  "tooltip": true,
-                  "viz": true
+                  "fixedColor": "light-purple",
+                  "mode": "fixed"
                 }
               }
             ]
@@ -2555,9 +4142,9 @@
         "h": 8,
         "w": 6,
         "x": 12,
-        "y": 40
+        "y": 58
       },
-      "id": 90,
+      "id": 474,
       "options": {
         "displayLabels": [
           "value"
@@ -2587,23 +4174,10 @@
         {
           "datasource": {
             "type": "influxdb",
-            "uid": "b2c82ab9-dd39-4c03-9caf-705fc994737d"
+            "uid": "${DS_INFLUXDB-1}"
           },
-          "groupBy": [
-            {
-              "params": [
-                "scenario::tag"
-              ],
-              "type": "tag"
-            },
-            {
-              "params": [
-                "method::tag"
-              ],
-              "type": "tag"
-            }
-          ],
-          "measurement": "/^$Measurement$/",
+          "groupBy": [],
+          "measurement": "const_vus_scenario",
           "orderByTime": "ASC",
           "policy": "default",
           "refId": "A",
@@ -2629,14 +4203,185 @@
               "value": "GET"
             }
           ]
+        },
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "${DS_INFLUXDB-1}"
+          },
+          "groupBy": [],
+          "hide": false,
+          "measurement": "per_vu_scenario",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "B",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "max"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "method::tag",
+              "operator": "=",
+              "value": "GET"
+            }
+          ]
+        },
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "${DS_INFLUXDB-1}"
+          },
+          "groupBy": [],
+          "hide": false,
+          "measurement": "shared_iter_scenario",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "C",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "max"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "condition": "AND",
+              "key": "method::tag",
+              "operator": "=",
+              "value": "GET"
+            }
+          ]
+        },
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "${DS_INFLUXDB-1}"
+          },
+          "groupBy": [],
+          "hide": false,
+          "measurement": "const_arrival_rate_scenario",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "D",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "max"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "method::tag",
+              "operator": "=",
+              "value": "GET"
+            }
+          ]
+        },
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "${DS_INFLUXDB-1}"
+          },
+          "groupBy": [],
+          "hide": false,
+          "measurement": "ramp_arrival_rate_scenario",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "E",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "max"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "method::tag",
+              "operator": "=",
+              "value": "GET"
+            }
+          ]
+        },
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "${DS_INFLUXDB-1}"
+          },
+          "groupBy": [],
+          "hide": false,
+          "measurement": "ext_controlled_scenario",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "F",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "max"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "method::tag",
+              "operator": "=",
+              "value": "GET"
+            }
+          ]
         }
       ],
-      "title": "GET(max)",
+      "title": "Comparison of scenarios (max time, method GET)",
       "transformations": [
         {
           "id": "renameByRegex",
           "options": {
-            "regex": "http_req_duration.max { (.*) }",
+            "regex": "(.*).max",
             "renamePattern": "$1"
           }
         }
@@ -2646,7 +4391,7 @@
     {
       "datasource": {
         "type": "influxdb",
-        "uid": "b2c82ab9-dd39-4c03-9caf-705fc994737d"
+        "uid": "${DS_INFLUXDB-1}"
       },
       "fieldConfig": {
         "defaults": {
@@ -2668,15 +4413,14 @@
           {
             "matcher": {
               "id": "byName",
-              "options": "scenario: "
+              "options": "ext_controlled_scenario"
             },
             "properties": [
               {
-                "id": "custom.hideFrom",
+                "id": "color",
                 "value": {
-                  "legend": true,
-                  "tooltip": true,
-                  "viz": true
+                  "fixedColor": "light-purple",
+                  "mode": "fixed"
                 }
               }
             ]
@@ -2687,9 +4431,9 @@
         "h": 8,
         "w": 6,
         "x": 18,
-        "y": 40
+        "y": 58
       },
-      "id": 91,
+      "id": 475,
       "options": {
         "displayLabels": [
           "value"
@@ -2719,23 +4463,10 @@
         {
           "datasource": {
             "type": "influxdb",
-            "uid": "b2c82ab9-dd39-4c03-9caf-705fc994737d"
+            "uid": "${DS_INFLUXDB-1}"
           },
-          "groupBy": [
-            {
-              "params": [
-                "scenario::tag"
-              ],
-              "type": "tag"
-            },
-            {
-              "params": [
-                "method::tag"
-              ],
-              "type": "tag"
-            }
-          ],
-          "measurement": "/^$Measurement$/",
+          "groupBy": [],
+          "measurement": "const_vus_scenario",
           "orderByTime": "ASC",
           "policy": "default",
           "refId": "A",
@@ -2761,14 +4492,185 @@
               "value": "DELETE"
             }
           ]
+        },
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "${DS_INFLUXDB-1}"
+          },
+          "groupBy": [],
+          "hide": false,
+          "measurement": "per_vu_scenario",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "B",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "max"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "method::tag",
+              "operator": "=",
+              "value": "DELETE"
+            }
+          ]
+        },
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "${DS_INFLUXDB-1}"
+          },
+          "groupBy": [],
+          "hide": false,
+          "measurement": "shared_iter_scenario",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "C",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "max"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "condition": "AND",
+              "key": "method::tag",
+              "operator": "=",
+              "value": "DELETE"
+            }
+          ]
+        },
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "${DS_INFLUXDB-1}"
+          },
+          "groupBy": [],
+          "hide": false,
+          "measurement": "const_arrival_rate_scenario",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "D",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "max"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "method::tag",
+              "operator": "=",
+              "value": "DELETE"
+            }
+          ]
+        },
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "${DS_INFLUXDB-1}"
+          },
+          "groupBy": [],
+          "hide": false,
+          "measurement": "ramp_arrival_rate_scenario",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "E",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "max"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "method::tag",
+              "operator": "=",
+              "value": "DELETE"
+            }
+          ]
+        },
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "${DS_INFLUXDB-1}"
+          },
+          "groupBy": [],
+          "hide": false,
+          "measurement": "ext_controlled_scenario",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "F",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "max"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "method::tag",
+              "operator": "=",
+              "value": "DELETE"
+            }
+          ]
         }
       ],
-      "title": "DELETE(max)",
+      "title": "Comparison of scenarios (max time, method DELETE)",
       "transformations": [
         {
           "id": "renameByRegex",
           "options": {
-            "regex": "http_req_duration.max { (.*) }",
+            "regex": "(.*).max",
             "renamePattern": "$1"
           }
         }
@@ -2778,7 +4680,7 @@
     {
       "datasource": {
         "type": "influxdb",
-        "uid": "b2c82ab9-dd39-4c03-9caf-705fc994737d"
+        "uid": "${DS_INFLUXDB-1}"
       },
       "fieldConfig": {
         "defaults": {
@@ -2800,15 +4702,14 @@
           {
             "matcher": {
               "id": "byName",
-              "options": "method: POST, scenario: "
+              "options": "ext_controlled_scenario"
             },
             "properties": [
               {
-                "id": "custom.hideFrom",
+                "id": "color",
                 "value": {
-                  "legend": true,
-                  "tooltip": true,
-                  "viz": true
+                  "fixedColor": "light-purple",
+                  "mode": "fixed"
                 }
               }
             ]
@@ -2819,9 +4720,9 @@
         "h": 8,
         "w": 6,
         "x": 0,
-        "y": 48
+        "y": 66
       },
-      "id": 84,
+      "id": 476,
       "options": {
         "displayLabels": [
           "value"
@@ -2851,26 +4752,185 @@
         {
           "datasource": {
             "type": "influxdb",
-            "uid": "b2c82ab9-dd39-4c03-9caf-705fc994737d"
+            "uid": "${DS_INFLUXDB-1}"
           },
-          "groupBy": [
-            {
-              "params": [
-                "scenario::tag"
-              ],
-              "type": "tag"
-            },
-            {
-              "params": [
-                "method::tag"
-              ],
-              "type": "tag"
-            }
-          ],
-          "measurement": "/^$Measurement$/",
+          "groupBy": [],
+          "measurement": "const_vus_scenario",
           "orderByTime": "ASC",
           "policy": "default",
           "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "min"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "condition": "AND",
+              "key": "method::tag",
+              "operator": "=",
+              "value": "POST"
+            }
+          ]
+        },
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "${DS_INFLUXDB-1}"
+          },
+          "groupBy": [],
+          "hide": false,
+          "measurement": "per_vu_scenario",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "B",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "min"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "method::tag",
+              "operator": "=",
+              "value": "POST"
+            }
+          ]
+        },
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "${DS_INFLUXDB-1}"
+          },
+          "groupBy": [],
+          "hide": false,
+          "measurement": "shared_iter_scenario",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "C",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "min"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "condition": "AND",
+              "key": "method::tag",
+              "operator": "=",
+              "value": "POST"
+            }
+          ]
+        },
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "${DS_INFLUXDB-1}"
+          },
+          "groupBy": [],
+          "hide": false,
+          "measurement": "const_arrival_rate_scenario",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "D",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "min"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "method::tag",
+              "operator": "=",
+              "value": "POST"
+            }
+          ]
+        },
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "${DS_INFLUXDB-1}"
+          },
+          "groupBy": [],
+          "hide": false,
+          "measurement": "ramp_arrival_rate_scenario",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "E",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "min"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "method::tag",
+              "operator": "=",
+              "value": "POST"
+            }
+          ]
+        },
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "${DS_INFLUXDB-1}"
+          },
+          "groupBy": [],
+          "hide": false,
+          "measurement": "ext_controlled_scenario",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "F",
           "resultFormat": "time_series",
           "select": [
             [
@@ -2895,12 +4955,12 @@
           ]
         }
       ],
-      "title": "POST(min)",
+      "title": "Comparison of scenarios (min time, method POST)",
       "transformations": [
         {
           "id": "renameByRegex",
           "options": {
-            "regex": "http_req_duration.min { (.*) }",
+            "regex": "(.*).min",
             "renamePattern": "$1"
           }
         }
@@ -2910,7 +4970,7 @@
     {
       "datasource": {
         "type": "influxdb",
-        "uid": "b2c82ab9-dd39-4c03-9caf-705fc994737d"
+        "uid": "${DS_INFLUXDB-1}"
       },
       "fieldConfig": {
         "defaults": {
@@ -2932,15 +4992,14 @@
           {
             "matcher": {
               "id": "byName",
-              "options": "scenario: "
+              "options": "ext_controlled_scenario"
             },
             "properties": [
               {
-                "id": "custom.hideFrom",
+                "id": "color",
                 "value": {
-                  "legend": true,
-                  "tooltip": true,
-                  "viz": true
+                  "fixedColor": "light-purple",
+                  "mode": "fixed"
                 }
               }
             ]
@@ -2951,9 +5010,9 @@
         "h": 8,
         "w": 6,
         "x": 6,
-        "y": 48
+        "y": 66
       },
-      "id": 92,
+      "id": 477,
       "options": {
         "displayLabels": [
           "value"
@@ -2983,26 +5042,185 @@
         {
           "datasource": {
             "type": "influxdb",
-            "uid": "b2c82ab9-dd39-4c03-9caf-705fc994737d"
+            "uid": "${DS_INFLUXDB-1}"
           },
-          "groupBy": [
-            {
-              "params": [
-                "scenario::tag"
-              ],
-              "type": "tag"
-            },
-            {
-              "params": [
-                "method::tag"
-              ],
-              "type": "tag"
-            }
-          ],
-          "measurement": "/^$Measurement$/",
+          "groupBy": [],
+          "measurement": "const_vus_scenario",
           "orderByTime": "ASC",
           "policy": "default",
           "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "min"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "condition": "AND",
+              "key": "method::tag",
+              "operator": "=",
+              "value": "PUT"
+            }
+          ]
+        },
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "${DS_INFLUXDB-1}"
+          },
+          "groupBy": [],
+          "hide": false,
+          "measurement": "per_vu_scenario",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "B",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "min"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "method::tag",
+              "operator": "=",
+              "value": "PUT"
+            }
+          ]
+        },
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "${DS_INFLUXDB-1}"
+          },
+          "groupBy": [],
+          "hide": false,
+          "measurement": "shared_iter_scenario",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "C",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "min"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "condition": "AND",
+              "key": "method::tag",
+              "operator": "=",
+              "value": "PUT"
+            }
+          ]
+        },
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "${DS_INFLUXDB-1}"
+          },
+          "groupBy": [],
+          "hide": false,
+          "measurement": "const_arrival_rate_scenario",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "D",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "min"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "method::tag",
+              "operator": "=",
+              "value": "PUT"
+            }
+          ]
+        },
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "${DS_INFLUXDB-1}"
+          },
+          "groupBy": [],
+          "hide": false,
+          "measurement": "ramp_arrival_rate_scenario",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "E",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "min"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "method::tag",
+              "operator": "=",
+              "value": "PUT"
+            }
+          ]
+        },
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "${DS_INFLUXDB-1}"
+          },
+          "groupBy": [],
+          "hide": false,
+          "measurement": "ext_controlled_scenario",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "F",
           "resultFormat": "time_series",
           "select": [
             [
@@ -3027,12 +5245,12 @@
           ]
         }
       ],
-      "title": "PUT(min)",
+      "title": "Comparison of scenarios (min time, method PUT)",
       "transformations": [
         {
           "id": "renameByRegex",
           "options": {
-            "regex": "http_req_duration.min { (.*) }",
+            "regex": "(.*).min",
             "renamePattern": "$1"
           }
         }
@@ -3042,7 +5260,7 @@
     {
       "datasource": {
         "type": "influxdb",
-        "uid": "b2c82ab9-dd39-4c03-9caf-705fc994737d"
+        "uid": "${DS_INFLUXDB-1}"
       },
       "fieldConfig": {
         "defaults": {
@@ -3064,15 +5282,14 @@
           {
             "matcher": {
               "id": "byName",
-              "options": "method: GET, scenario: "
+              "options": "ext_controlled_scenario"
             },
             "properties": [
               {
-                "id": "custom.hideFrom",
+                "id": "color",
                 "value": {
-                  "legend": true,
-                  "tooltip": true,
-                  "viz": true
+                  "fixedColor": "light-purple",
+                  "mode": "fixed"
                 }
               }
             ]
@@ -3083,9 +5300,9 @@
         "h": 8,
         "w": 6,
         "x": 12,
-        "y": 48
+        "y": 66
       },
-      "id": 93,
+      "id": 478,
       "options": {
         "displayLabels": [
           "value"
@@ -3115,26 +5332,185 @@
         {
           "datasource": {
             "type": "influxdb",
-            "uid": "b2c82ab9-dd39-4c03-9caf-705fc994737d"
+            "uid": "${DS_INFLUXDB-1}"
           },
-          "groupBy": [
-            {
-              "params": [
-                "scenario::tag"
-              ],
-              "type": "tag"
-            },
-            {
-              "params": [
-                "method::tag"
-              ],
-              "type": "tag"
-            }
-          ],
-          "measurement": "/^$Measurement$/",
+          "groupBy": [],
+          "measurement": "const_vus_scenario",
           "orderByTime": "ASC",
           "policy": "default",
           "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "min"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "condition": "AND",
+              "key": "method::tag",
+              "operator": "=",
+              "value": "GET"
+            }
+          ]
+        },
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "${DS_INFLUXDB-1}"
+          },
+          "groupBy": [],
+          "hide": false,
+          "measurement": "per_vu_scenario",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "B",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "min"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "method::tag",
+              "operator": "=",
+              "value": "GET"
+            }
+          ]
+        },
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "${DS_INFLUXDB-1}"
+          },
+          "groupBy": [],
+          "hide": false,
+          "measurement": "shared_iter_scenario",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "C",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "min"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "condition": "AND",
+              "key": "method::tag",
+              "operator": "=",
+              "value": "GET"
+            }
+          ]
+        },
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "${DS_INFLUXDB-1}"
+          },
+          "groupBy": [],
+          "hide": false,
+          "measurement": "const_arrival_rate_scenario",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "D",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "min"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "method::tag",
+              "operator": "=",
+              "value": "GET"
+            }
+          ]
+        },
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "${DS_INFLUXDB-1}"
+          },
+          "groupBy": [],
+          "hide": false,
+          "measurement": "ramp_arrival_rate_scenario",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "E",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "min"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "method::tag",
+              "operator": "=",
+              "value": "GET"
+            }
+          ]
+        },
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "${DS_INFLUXDB-1}"
+          },
+          "groupBy": [],
+          "hide": false,
+          "measurement": "ext_controlled_scenario",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "F",
           "resultFormat": "time_series",
           "select": [
             [
@@ -3159,12 +5535,12 @@
           ]
         }
       ],
-      "title": "GET(min)",
+      "title": "Comparison of scenarios (min time, method GET)",
       "transformations": [
         {
           "id": "renameByRegex",
           "options": {
-            "regex": "http_req_duration.min { (.*) }",
+            "regex": "(.*).min",
             "renamePattern": "$1"
           }
         }
@@ -3174,7 +5550,7 @@
     {
       "datasource": {
         "type": "influxdb",
-        "uid": "b2c82ab9-dd39-4c03-9caf-705fc994737d"
+        "uid": "${DS_INFLUXDB-1}"
       },
       "fieldConfig": {
         "defaults": {
@@ -3196,15 +5572,14 @@
           {
             "matcher": {
               "id": "byName",
-              "options": "scenario: "
+              "options": "ext_controlled_scenario"
             },
             "properties": [
               {
-                "id": "custom.hideFrom",
+                "id": "color",
                 "value": {
-                  "legend": true,
-                  "tooltip": true,
-                  "viz": true
+                  "fixedColor": "light-purple",
+                  "mode": "fixed"
                 }
               }
             ]
@@ -3215,9 +5590,9 @@
         "h": 8,
         "w": 6,
         "x": 18,
-        "y": 48
+        "y": 66
       },
-      "id": 94,
+      "id": 479,
       "options": {
         "displayLabels": [
           "value"
@@ -3247,26 +5622,185 @@
         {
           "datasource": {
             "type": "influxdb",
-            "uid": "b2c82ab9-dd39-4c03-9caf-705fc994737d"
+            "uid": "${DS_INFLUXDB-1}"
           },
-          "groupBy": [
-            {
-              "params": [
-                "scenario::tag"
-              ],
-              "type": "tag"
-            },
-            {
-              "params": [
-                "method::tag"
-              ],
-              "type": "tag"
-            }
-          ],
-          "measurement": "/^$Measurement$/",
+          "groupBy": [],
+          "measurement": "const_vus_scenario",
           "orderByTime": "ASC",
           "policy": "default",
           "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "min"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "condition": "AND",
+              "key": "method::tag",
+              "operator": "=",
+              "value": "DELETE"
+            }
+          ]
+        },
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "${DS_INFLUXDB-1}"
+          },
+          "groupBy": [],
+          "hide": false,
+          "measurement": "per_vu_scenario",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "B",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "min"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "method::tag",
+              "operator": "=",
+              "value": "DELETE"
+            }
+          ]
+        },
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "${DS_INFLUXDB-1}"
+          },
+          "groupBy": [],
+          "hide": false,
+          "measurement": "shared_iter_scenario",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "C",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "min"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "condition": "AND",
+              "key": "method::tag",
+              "operator": "=",
+              "value": "DELETE"
+            }
+          ]
+        },
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "${DS_INFLUXDB-1}"
+          },
+          "groupBy": [],
+          "hide": false,
+          "measurement": "const_arrival_rate_scenario",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "D",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "min"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "method::tag",
+              "operator": "=",
+              "value": "DELETE"
+            }
+          ]
+        },
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "${DS_INFLUXDB-1}"
+          },
+          "groupBy": [],
+          "hide": false,
+          "measurement": "ramp_arrival_rate_scenario",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "E",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "min"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "method::tag",
+              "operator": "=",
+              "value": "DELETE"
+            }
+          ]
+        },
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "${DS_INFLUXDB-1}"
+          },
+          "groupBy": [],
+          "hide": false,
+          "measurement": "ext_controlled_scenario",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "F",
           "resultFormat": "time_series",
           "select": [
             [
@@ -3291,12 +5825,12 @@
           ]
         }
       ],
-      "title": "DELETE(min)",
+      "title": "Comparison of scenarios (min time, method DELETE)",
       "transformations": [
         {
           "id": "renameByRegex",
           "options": {
-            "regex": "http_req_duration.min { (.*) }",
+            "regex": "(.*).min",
             "renamePattern": "$1"
           }
         }
@@ -3306,7 +5840,7 @@
     {
       "datasource": {
         "type": "influxdb",
-        "uid": "b2c82ab9-dd39-4c03-9caf-705fc994737d"
+        "uid": "${DS_INFLUXDB-1}"
       },
       "fieldConfig": {
         "defaults": {
@@ -3328,31 +5862,14 @@
           {
             "matcher": {
               "id": "byName",
-              "options": "scenario: , method: POST"
+              "options": "ext_controlled_scenario"
             },
             "properties": [
               {
-                "id": "custom.hideFrom",
+                "id": "color",
                 "value": {
-                  "legend": true,
-                  "tooltip": true,
-                  "viz": true
-                }
-              }
-            ]
-          },
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "method: POST, scenario: "
-            },
-            "properties": [
-              {
-                "id": "custom.hideFrom",
-                "value": {
-                  "legend": true,
-                  "tooltip": true,
-                  "viz": true
+                  "fixedColor": "light-purple",
+                  "mode": "fixed"
                 }
               }
             ]
@@ -3363,9 +5880,9 @@
         "h": 8,
         "w": 6,
         "x": 0,
-        "y": 56
+        "y": 74
       },
-      "id": 85,
+      "id": 480,
       "options": {
         "displayLabels": [
           "value"
@@ -3395,26 +5912,185 @@
         {
           "datasource": {
             "type": "influxdb",
-            "uid": "b2c82ab9-dd39-4c03-9caf-705fc994737d"
+            "uid": "${DS_INFLUXDB-1}"
           },
-          "groupBy": [
-            {
-              "params": [
-                "scenario::tag"
-              ],
-              "type": "tag"
-            },
-            {
-              "params": [
-                "method::tag"
-              ],
-              "type": "tag"
-            }
-          ],
-          "measurement": "/^$Measurement$/",
+          "groupBy": [],
+          "measurement": "const_vus_scenario",
           "orderByTime": "ASC",
           "policy": "default",
           "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "median"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "condition": "AND",
+              "key": "method::tag",
+              "operator": "=",
+              "value": "POST"
+            }
+          ]
+        },
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "${DS_INFLUXDB-1}"
+          },
+          "groupBy": [],
+          "hide": false,
+          "measurement": "per_vu_scenario",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "B",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "median"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "method::tag",
+              "operator": "=",
+              "value": "POST"
+            }
+          ]
+        },
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "${DS_INFLUXDB-1}"
+          },
+          "groupBy": [],
+          "hide": false,
+          "measurement": "shared_iter_scenario",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "C",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "median"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "condition": "AND",
+              "key": "method::tag",
+              "operator": "=",
+              "value": "POST"
+            }
+          ]
+        },
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "${DS_INFLUXDB-1}"
+          },
+          "groupBy": [],
+          "hide": false,
+          "measurement": "const_arrival_rate_scenario",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "D",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "median"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "method::tag",
+              "operator": "=",
+              "value": "POST"
+            }
+          ]
+        },
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "${DS_INFLUXDB-1}"
+          },
+          "groupBy": [],
+          "hide": false,
+          "measurement": "ramp_arrival_rate_scenario",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "E",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "median"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "method::tag",
+              "operator": "=",
+              "value": "POST"
+            }
+          ]
+        },
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "${DS_INFLUXDB-1}"
+          },
+          "groupBy": [],
+          "hide": false,
+          "measurement": "ext_controlled_scenario",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "F",
           "resultFormat": "time_series",
           "select": [
             [
@@ -3439,12 +6115,12 @@
           ]
         }
       ],
-      "title": "POST(median)",
+      "title": "Comparison of scenarios (median time, method POST)",
       "transformations": [
         {
           "id": "renameByRegex",
           "options": {
-            "regex": "http_req_duration.median { (.*) }",
+            "regex": "(.*).median",
             "renamePattern": "$1"
           }
         }
@@ -3454,7 +6130,7 @@
     {
       "datasource": {
         "type": "influxdb",
-        "uid": "b2c82ab9-dd39-4c03-9caf-705fc994737d"
+        "uid": "${DS_INFLUXDB-1}"
       },
       "fieldConfig": {
         "defaults": {
@@ -3476,15 +6152,14 @@
           {
             "matcher": {
               "id": "byName",
-              "options": "scenario: "
+              "options": "ext_controlled_scenario"
             },
             "properties": [
               {
-                "id": "custom.hideFrom",
+                "id": "color",
                 "value": {
-                  "legend": true,
-                  "tooltip": true,
-                  "viz": true
+                  "fixedColor": "light-purple",
+                  "mode": "fixed"
                 }
               }
             ]
@@ -3495,9 +6170,9 @@
         "h": 8,
         "w": 6,
         "x": 6,
-        "y": 56
+        "y": 74
       },
-      "id": 95,
+      "id": 481,
       "options": {
         "displayLabels": [
           "value"
@@ -3527,26 +6202,185 @@
         {
           "datasource": {
             "type": "influxdb",
-            "uid": "b2c82ab9-dd39-4c03-9caf-705fc994737d"
+            "uid": "${DS_INFLUXDB-1}"
           },
-          "groupBy": [
-            {
-              "params": [
-                "scenario::tag"
-              ],
-              "type": "tag"
-            },
-            {
-              "params": [
-                "method::tag"
-              ],
-              "type": "tag"
-            }
-          ],
-          "measurement": "/^$Measurement$/",
+          "groupBy": [],
+          "measurement": "const_vus_scenario",
           "orderByTime": "ASC",
           "policy": "default",
           "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "median"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "condition": "AND",
+              "key": "method::tag",
+              "operator": "=",
+              "value": "PUT"
+            }
+          ]
+        },
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "${DS_INFLUXDB-1}"
+          },
+          "groupBy": [],
+          "hide": false,
+          "measurement": "per_vu_scenario",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "B",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "median"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "method::tag",
+              "operator": "=",
+              "value": "PUT"
+            }
+          ]
+        },
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "${DS_INFLUXDB-1}"
+          },
+          "groupBy": [],
+          "hide": false,
+          "measurement": "shared_iter_scenario",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "C",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "median"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "condition": "AND",
+              "key": "method::tag",
+              "operator": "=",
+              "value": "PUT"
+            }
+          ]
+        },
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "${DS_INFLUXDB-1}"
+          },
+          "groupBy": [],
+          "hide": false,
+          "measurement": "const_arrival_rate_scenario",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "D",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "median"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "method::tag",
+              "operator": "=",
+              "value": "PUT"
+            }
+          ]
+        },
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "${DS_INFLUXDB-1}"
+          },
+          "groupBy": [],
+          "hide": false,
+          "measurement": "ramp_arrival_rate_scenario",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "E",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "median"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "method::tag",
+              "operator": "=",
+              "value": "PUT"
+            }
+          ]
+        },
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "${DS_INFLUXDB-1}"
+          },
+          "groupBy": [],
+          "hide": false,
+          "measurement": "ext_controlled_scenario",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "F",
           "resultFormat": "time_series",
           "select": [
             [
@@ -3571,12 +6405,12 @@
           ]
         }
       ],
-      "title": "PUT(median)",
+      "title": "Comparison of scenarios (median time, method PUT)",
       "transformations": [
         {
           "id": "renameByRegex",
           "options": {
-            "regex": "http_req_duration.median { (.*) }",
+            "regex": "(.*).median",
             "renamePattern": "$1"
           }
         }
@@ -3586,7 +6420,7 @@
     {
       "datasource": {
         "type": "influxdb",
-        "uid": "b2c82ab9-dd39-4c03-9caf-705fc994737d"
+        "uid": "${DS_INFLUXDB-1}"
       },
       "fieldConfig": {
         "defaults": {
@@ -3608,15 +6442,14 @@
           {
             "matcher": {
               "id": "byName",
-              "options": "method: GET, scenario: "
+              "options": "ext_controlled_scenario"
             },
             "properties": [
               {
-                "id": "custom.hideFrom",
+                "id": "color",
                 "value": {
-                  "legend": true,
-                  "tooltip": true,
-                  "viz": true
+                  "fixedColor": "light-purple",
+                  "mode": "fixed"
                 }
               }
             ]
@@ -3627,9 +6460,9 @@
         "h": 8,
         "w": 6,
         "x": 12,
-        "y": 56
+        "y": 74
       },
-      "id": 96,
+      "id": 482,
       "options": {
         "displayLabels": [
           "value"
@@ -3659,26 +6492,185 @@
         {
           "datasource": {
             "type": "influxdb",
-            "uid": "b2c82ab9-dd39-4c03-9caf-705fc994737d"
+            "uid": "${DS_INFLUXDB-1}"
           },
-          "groupBy": [
-            {
-              "params": [
-                "scenario::tag"
-              ],
-              "type": "tag"
-            },
-            {
-              "params": [
-                "method::tag"
-              ],
-              "type": "tag"
-            }
-          ],
-          "measurement": "/^$Measurement$/",
+          "groupBy": [],
+          "measurement": "const_vus_scenario",
           "orderByTime": "ASC",
           "policy": "default",
           "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "median"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "condition": "AND",
+              "key": "method::tag",
+              "operator": "=",
+              "value": "GET"
+            }
+          ]
+        },
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "${DS_INFLUXDB-1}"
+          },
+          "groupBy": [],
+          "hide": false,
+          "measurement": "per_vu_scenario",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "B",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "median"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "method::tag",
+              "operator": "=",
+              "value": "GET"
+            }
+          ]
+        },
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "${DS_INFLUXDB-1}"
+          },
+          "groupBy": [],
+          "hide": false,
+          "measurement": "shared_iter_scenario",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "C",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "median"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "condition": "AND",
+              "key": "method::tag",
+              "operator": "=",
+              "value": "GET"
+            }
+          ]
+        },
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "${DS_INFLUXDB-1}"
+          },
+          "groupBy": [],
+          "hide": false,
+          "measurement": "const_arrival_rate_scenario",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "D",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "median"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "method::tag",
+              "operator": "=",
+              "value": "GET"
+            }
+          ]
+        },
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "${DS_INFLUXDB-1}"
+          },
+          "groupBy": [],
+          "hide": false,
+          "measurement": "ramp_arrival_rate_scenario",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "E",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "median"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "method::tag",
+              "operator": "=",
+              "value": "GET"
+            }
+          ]
+        },
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "${DS_INFLUXDB-1}"
+          },
+          "groupBy": [],
+          "hide": false,
+          "measurement": "ext_controlled_scenario",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "F",
           "resultFormat": "time_series",
           "select": [
             [
@@ -3703,12 +6695,12 @@
           ]
         }
       ],
-      "title": "GET(median)",
+      "title": "Comparison of scenarios (median time, method GET)",
       "transformations": [
         {
           "id": "renameByRegex",
           "options": {
-            "regex": "http_req_duration.median { (.*) }",
+            "regex": "(.*).median",
             "renamePattern": "$1"
           }
         }
@@ -3718,7 +6710,7 @@
     {
       "datasource": {
         "type": "influxdb",
-        "uid": "b2c82ab9-dd39-4c03-9caf-705fc994737d"
+        "uid": "${DS_INFLUXDB-1}"
       },
       "fieldConfig": {
         "defaults": {
@@ -3740,15 +6732,14 @@
           {
             "matcher": {
               "id": "byName",
-              "options": "scenario: "
+              "options": "ext_controlled_scenario"
             },
             "properties": [
               {
-                "id": "custom.hideFrom",
+                "id": "color",
                 "value": {
-                  "legend": true,
-                  "tooltip": true,
-                  "viz": true
+                  "fixedColor": "light-purple",
+                  "mode": "fixed"
                 }
               }
             ]
@@ -3759,9 +6750,9 @@
         "h": 8,
         "w": 6,
         "x": 18,
-        "y": 56
+        "y": 74
       },
-      "id": 97,
+      "id": 483,
       "options": {
         "displayLabels": [
           "value"
@@ -3791,26 +6782,185 @@
         {
           "datasource": {
             "type": "influxdb",
-            "uid": "b2c82ab9-dd39-4c03-9caf-705fc994737d"
+            "uid": "${DS_INFLUXDB-1}"
           },
-          "groupBy": [
-            {
-              "params": [
-                "scenario::tag"
-              ],
-              "type": "tag"
-            },
-            {
-              "params": [
-                "method::tag"
-              ],
-              "type": "tag"
-            }
-          ],
-          "measurement": "/^$Measurement$/",
+          "groupBy": [],
+          "measurement": "const_vus_scenario",
           "orderByTime": "ASC",
           "policy": "default",
           "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "median"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "condition": "AND",
+              "key": "method::tag",
+              "operator": "=",
+              "value": "DELETE"
+            }
+          ]
+        },
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "${DS_INFLUXDB-1}"
+          },
+          "groupBy": [],
+          "hide": false,
+          "measurement": "per_vu_scenario",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "B",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "median"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "method::tag",
+              "operator": "=",
+              "value": "DELETE"
+            }
+          ]
+        },
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "${DS_INFLUXDB-1}"
+          },
+          "groupBy": [],
+          "hide": false,
+          "measurement": "shared_iter_scenario",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "C",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "median"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "condition": "AND",
+              "key": "method::tag",
+              "operator": "=",
+              "value": "DELETE"
+            }
+          ]
+        },
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "${DS_INFLUXDB-1}"
+          },
+          "groupBy": [],
+          "hide": false,
+          "measurement": "const_arrival_rate_scenario",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "D",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "median"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "method::tag",
+              "operator": "=",
+              "value": "DELETE"
+            }
+          ]
+        },
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "${DS_INFLUXDB-1}"
+          },
+          "groupBy": [],
+          "hide": false,
+          "measurement": "ramp_arrival_rate_scenario",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "E",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "median"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "method::tag",
+              "operator": "=",
+              "value": "DELETE"
+            }
+          ]
+        },
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "${DS_INFLUXDB-1}"
+          },
+          "groupBy": [],
+          "hide": false,
+          "measurement": "ext_controlled_scenario",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "F",
           "resultFormat": "time_series",
           "select": [
             [
@@ -3835,12 +6985,12 @@
           ]
         }
       ],
-      "title": "DELETE(median)",
+      "title": "Comparison of scenarios (median time, method DELETE)",
       "transformations": [
         {
           "id": "renameByRegex",
           "options": {
-            "regex": "http_req_duration.median { (.*) }",
+            "regex": "(.*).median",
             "renamePattern": "$1"
           }
         }
@@ -3848,9 +6998,24 @@
       "type": "piechart"
     },
     {
+      "collapsed": false,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 82
+      },
+      "id": 230,
+      "panels": [],
+      "repeat": "Scenarios",
+      "repeatDirection": "h",
+      "title": "$Scenarios",
+      "type": "row"
+    },
+    {
       "datasource": {
         "type": "influxdb",
-        "uid": "b2c82ab9-dd39-4c03-9caf-705fc994737d"
+        "uid": "${DS_INFLUXDB-1}"
       },
       "fieldConfig": {
         "defaults": {
@@ -3876,12 +7041,12 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 4,
+        "h": 5,
         "w": 4,
         "x": 0,
-        "y": 64
+        "y": 83
       },
-      "id": 37,
+      "id": 367,
       "options": {
         "colorMode": "value",
         "graphMode": "area",
@@ -3903,7 +7068,7 @@
         {
           "datasource": {
             "type": "influxdb",
-            "uid": "b2c82ab9-dd39-4c03-9caf-705fc994737d"
+            "uid": "${DS_INFLUXDB-1}"
           },
           "groupBy": [
             {
@@ -3919,7 +7084,7 @@
               "type": "fill"
             }
           ],
-          "measurement": "/^$Measurement$/",
+          "measurement": "/^$Scenarios$/",
           "orderByTime": "ASC",
           "policy": "default",
           "refId": "A",
@@ -3941,20 +7106,19 @@
           "tags": []
         }
       ],
-      "title": "$Measurement (count)",
+      "title": "$Scenarios (count)",
       "type": "stat"
     },
     {
       "datasource": {
         "type": "influxdb",
-        "uid": "b2c82ab9-dd39-4c03-9caf-705fc994737d"
+        "uid": "${DS_INFLUXDB-1}"
       },
       "fieldConfig": {
         "defaults": {
           "color": {
             "mode": "thresholds"
           },
-          "decimals": 2,
           "mappings": [],
           "thresholds": {
             "mode": "absolute",
@@ -3975,113 +7139,12 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 4,
+        "h": 5,
         "w": 4,
         "x": 4,
-        "y": 64
+        "y": 83
       },
-      "id": 32,
-      "options": {
-        "colorMode": "value",
-        "graphMode": "area",
-        "justifyMode": "auto",
-        "orientation": "auto",
-        "reduceOptions": {
-          "calcs": [
-            "mean"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "showPercentChange": false,
-        "textMode": "auto",
-        "wideLayout": true
-      },
-      "pluginVersion": "10.3.1",
-      "targets": [
-        {
-          "datasource": {
-            "type": "influxdb",
-            "uid": "b2c82ab9-dd39-4c03-9caf-705fc994737d"
-          },
-          "groupBy": [
-            {
-              "params": [
-                "$__interval"
-              ],
-              "type": "time"
-            },
-            {
-              "params": [
-                "null"
-              ],
-              "type": "fill"
-            }
-          ],
-          "measurement": "/^$Measurement$/",
-          "orderByTime": "ASC",
-          "policy": "default",
-          "query": "SELECT mean(\"value\") FROM \"measurement\" WHERE $timeFilter GROUP BY time($__interval) fill(null)",
-          "rawQuery": false,
-          "refId": "A",
-          "resultFormat": "time_series",
-          "select": [
-            [
-              {
-                "params": [
-                  "value"
-                ],
-                "type": "field"
-              },
-              {
-                "params": [],
-                "type": "mean"
-              }
-            ]
-          ],
-          "tags": []
-        }
-      ],
-      "title": "$Measurement (mean)",
-      "type": "stat"
-    },
-    {
-      "datasource": {
-        "type": "influxdb",
-        "uid": "b2c82ab9-dd39-4c03-9caf-705fc994737d"
-      },
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
-          "decimals": 2,
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "red",
-                "value": 80
-              }
-            ]
-          },
-          "unit": "ms",
-          "unitScale": true
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 4,
-        "w": 4,
-        "x": 8,
-        "y": 64
-      },
-      "id": 33,
+      "id": 368,
       "options": {
         "colorMode": "value",
         "graphMode": "area",
@@ -4103,7 +7166,7 @@
         {
           "datasource": {
             "type": "influxdb",
-            "uid": "b2c82ab9-dd39-4c03-9caf-705fc994737d"
+            "uid": "${DS_INFLUXDB-1}"
           },
           "groupBy": [
             {
@@ -4119,11 +7182,9 @@
               "type": "fill"
             }
           ],
-          "measurement": "/^$Measurement$/",
+          "measurement": "/^$Scenarios$/",
           "orderByTime": "ASC",
           "policy": "default",
-          "query": "SELECT mean(\"value\") FROM \"measurement\" WHERE $timeFilter GROUP BY time($__interval) fill(null)",
-          "rawQuery": false,
           "refId": "A",
           "resultFormat": "time_series",
           "select": [
@@ -4143,121 +7204,19 @@
           "tags": []
         }
       ],
-      "title": "$Measurement (max)",
+      "title": "$Scenarios (max)",
       "type": "stat"
     },
     {
       "datasource": {
         "type": "influxdb",
-        "uid": "b2c82ab9-dd39-4c03-9caf-705fc994737d"
+        "uid": "${DS_INFLUXDB-1}"
       },
       "fieldConfig": {
         "defaults": {
           "color": {
             "mode": "thresholds"
           },
-          "decimals": 2,
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "red",
-                "value": 800
-              }
-            ]
-          },
-          "unit": "ms",
-          "unitScale": true
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 4,
-        "w": 4,
-        "x": 12,
-        "y": 64
-      },
-      "id": 34,
-      "options": {
-        "colorMode": "value",
-        "graphMode": "area",
-        "justifyMode": "auto",
-        "orientation": "auto",
-        "reduceOptions": {
-          "calcs": [
-            "mean"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "showPercentChange": false,
-        "textMode": "auto",
-        "wideLayout": true
-      },
-      "pluginVersion": "10.3.1",
-      "targets": [
-        {
-          "datasource": {
-            "type": "influxdb",
-            "uid": "b2c82ab9-dd39-4c03-9caf-705fc994737d"
-          },
-          "groupBy": [
-            {
-              "params": [
-                "$__interval"
-              ],
-              "type": "time"
-            },
-            {
-              "params": [
-                "null"
-              ],
-              "type": "fill"
-            }
-          ],
-          "measurement": "/^$Measurement$/",
-          "orderByTime": "ASC",
-          "policy": "default",
-          "query": "SELECT mean(\"value\") FROM \"measurement\" WHERE $timeFilter GROUP BY time($__interval) fill(null)",
-          "rawQuery": false,
-          "refId": "A",
-          "resultFormat": "time_series",
-          "select": [
-            [
-              {
-                "params": [
-                  "value"
-                ],
-                "type": "field"
-              },
-              {
-                "params": [],
-                "type": "median"
-              }
-            ]
-          ],
-          "tags": []
-        }
-      ],
-      "title": "$Measurement (median)",
-      "type": "stat"
-    },
-    {
-      "datasource": {
-        "type": "influxdb",
-        "uid": "b2c82ab9-dd39-4c03-9caf-705fc994737d"
-      },
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
-          "decimals": 2,
           "mappings": [],
           "thresholds": {
             "mode": "absolute",
@@ -4278,12 +7237,12 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 4,
+        "h": 5,
         "w": 4,
-        "x": 16,
-        "y": 64
+        "x": 8,
+        "y": 83
       },
-      "id": 35,
+      "id": 369,
       "options": {
         "colorMode": "value",
         "graphMode": "area",
@@ -4305,7 +7264,7 @@
         {
           "datasource": {
             "type": "influxdb",
-            "uid": "b2c82ab9-dd39-4c03-9caf-705fc994737d"
+            "uid": "${DS_INFLUXDB-1}"
           },
           "groupBy": [
             {
@@ -4321,11 +7280,9 @@
               "type": "fill"
             }
           ],
-          "measurement": "/^$Measurement$/",
+          "measurement": "/^$Scenarios$/",
           "orderByTime": "ASC",
           "policy": "default",
-          "query": "SELECT mean(\"value\") FROM \"measurement\" WHERE $timeFilter GROUP BY time($__interval) fill(null)",
-          "rawQuery": false,
           "refId": "A",
           "resultFormat": "time_series",
           "select": [
@@ -4345,20 +7302,19 @@
           "tags": []
         }
       ],
-      "title": "$Measurement (min)",
+      "title": "$Scenarios (min)",
       "type": "stat"
     },
     {
       "datasource": {
         "type": "influxdb",
-        "uid": "b2c82ab9-dd39-4c03-9caf-705fc994737d"
+        "uid": "${DS_INFLUXDB-1}"
       },
       "fieldConfig": {
         "defaults": {
           "color": {
             "mode": "thresholds"
           },
-          "decimals": 2,
           "mappings": [],
           "thresholds": {
             "mode": "absolute",
@@ -4379,12 +7335,12 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 4,
+        "h": 5,
         "w": 4,
-        "x": 20,
-        "y": 64
+        "x": 12,
+        "y": 83
       },
-      "id": 36,
+      "id": 370,
       "options": {
         "colorMode": "value",
         "graphMode": "area",
@@ -4406,14 +7362,221 @@
         {
           "datasource": {
             "type": "influxdb",
-            "uid": "b2c82ab9-dd39-4c03-9caf-705fc994737d"
+            "uid": "${DS_INFLUXDB-1}"
           },
-          "groupBy": [],
-          "measurement": "/^$Measurement$/",
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "measurement": "/^$Scenarios$/",
           "orderByTime": "ASC",
           "policy": "default",
-          "query": "SELECT mean(\"value\") FROM \"measurement\" WHERE $timeFilter GROUP BY time($__interval) fill(null)",
-          "rawQuery": false,
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": []
+        }
+      ],
+      "title": "$Scenarios (mean)",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "influxdb",
+        "uid": "${DS_INFLUXDB-1}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "ms",
+          "unitScale": true
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 5,
+        "w": 4,
+        "x": 16,
+        "y": 83
+      },
+      "id": 371,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "mean"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "10.3.1",
+      "targets": [
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "${DS_INFLUXDB-1}"
+          },
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "measurement": "/^$Scenarios$/",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "median"
+              }
+            ]
+          ],
+          "tags": []
+        }
+      ],
+      "title": "$Scenarios (median)",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "influxdb",
+        "uid": "${DS_INFLUXDB-1}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "ms",
+          "unitScale": true
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 5,
+        "w": 4,
+        "x": 20,
+        "y": 83
+      },
+      "id": 372,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "mean"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "10.3.1",
+      "targets": [
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "${DS_INFLUXDB-1}"
+          },
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "measurement": "/^$Scenarios$/",
+          "orderByTime": "ASC",
+          "policy": "default",
           "refId": "A",
           "resultFormat": "time_series",
           "select": [
@@ -4431,16 +7594,17 @@
                 "type": "percentile"
               }
             ]
-          ]
+          ],
+          "tags": []
         }
       ],
-      "title": "$Measurement (p95)",
+      "title": "$Scenarios (p95)",
       "type": "stat"
     },
     {
       "datasource": {
         "type": "influxdb",
-        "uid": "b2c82ab9-dd39-4c03-9caf-705fc994737d"
+        "uid": "${DS_INFLUXDB-1}"
       },
       "fieldConfig": {
         "defaults": {
@@ -4496,6 +7660,7 @@
               }
             ]
           },
+          "unit": "ms",
           "unitScale": true
         },
         "overrides": [
@@ -4546,6 +7711,30 @@
                 "value": "Median"
               }
             ]
+          },
+          {
+            "__systemRef": "hideSeriesFrom",
+            "matcher": {
+              "id": "byNames",
+              "options": {
+                "mode": "exclude",
+                "names": [
+                  "median"
+                ],
+                "prefix": "All except:",
+                "readOnly": true
+              }
+            },
+            "properties": [
+              {
+                "id": "custom.hideFrom",
+                "value": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": true
+                }
+              }
+            ]
           }
         ]
       },
@@ -4553,9 +7742,9 @@
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 68
+        "y": 88
       },
-      "id": 16,
+      "id": 408,
       "options": {
         "legend": {
           "calcs": [],
@@ -4572,7 +7761,7 @@
         {
           "datasource": {
             "type": "influxdb",
-            "uid": "b2c82ab9-dd39-4c03-9caf-705fc994737d"
+            "uid": "${DS_INFLUXDB-1}"
           },
           "groupBy": [
             {
@@ -4588,7 +7777,7 @@
               "type": "fill"
             }
           ],
-          "measurement": "/^$Measurement$/",
+          "measurement": "/^$Scenarios$/",
           "orderByTime": "ASC",
           "policy": "default",
           "query": "SELECT max(\"value\") FROM /^$Measurement$/ WHERE $timeFilter and value > 0 GROUP BY time($__interval) fill(null)",
@@ -4614,7 +7803,7 @@
         {
           "datasource": {
             "type": "influxdb",
-            "uid": "b2c82ab9-dd39-4c03-9caf-705fc994737d"
+            "uid": "${DS_INFLUXDB-1}"
           },
           "groupBy": [
             {
@@ -4631,7 +7820,7 @@
             }
           ],
           "hide": false,
-          "measurement": "/^$Measurement$/",
+          "measurement": "/^$Scenarios$/",
           "orderByTime": "ASC",
           "policy": "default",
           "query": "SELECT percentile(\"value\", 90) FROM /^$Measurement$/ WHERE $timeFilter GROUP BY time($__interval) fill(null)",
@@ -4659,7 +7848,7 @@
         {
           "datasource": {
             "type": "influxdb",
-            "uid": "b2c82ab9-dd39-4c03-9caf-705fc994737d"
+            "uid": "${DS_INFLUXDB-1}"
           },
           "groupBy": [
             {
@@ -4676,7 +7865,7 @@
             }
           ],
           "hide": false,
-          "measurement": "/^$Measurement$/",
+          "measurement": "/^$Scenarios$/",
           "orderByTime": "ASC",
           "policy": "default",
           "refId": "C",
@@ -4700,7 +7889,7 @@
         {
           "datasource": {
             "type": "influxdb",
-            "uid": "b2c82ab9-dd39-4c03-9caf-705fc994737d"
+            "uid": "${DS_INFLUXDB-1}"
           },
           "groupBy": [
             {
@@ -4717,7 +7906,7 @@
             }
           ],
           "hide": false,
-          "measurement": "/^$Measurement$/",
+          "measurement": "/^$Scenarios$/",
           "orderByTime": "ASC",
           "policy": "default",
           "refId": "D",
@@ -4739,13 +7928,13 @@
           "tags": []
         }
       ],
-      "title": "$Measurement (over time)",
+      "title": "$Scenarios (over time)",
       "type": "timeseries"
     },
     {
       "datasource": {
         "type": "influxdb",
-        "uid": "b2c82ab9-dd39-4c03-9caf-705fc994737d"
+        "uid": "${DS_INFLUXDB-1}"
       },
       "fieldConfig": {
         "defaults": {
@@ -4767,9 +7956,9 @@
         "h": 8,
         "w": 12,
         "x": 12,
-        "y": 68
+        "y": 88
       },
-      "id": 80,
+      "id": 409,
       "options": {
         "calculate": true,
         "calculation": {
@@ -4818,13 +8007,13 @@
         {
           "datasource": {
             "type": "influxdb",
-            "uid": "b2c82ab9-dd39-4c03-9caf-705fc994737d"
+            "uid": "${DS_INFLUXDB-1}"
           },
           "groupBy": [],
           "measurement": "/^$Measurement$/",
           "orderByTime": "ASC",
           "policy": "default",
-          "query": "SELECT \"value\" FROM $Measurement WHERE $timeFilter and value > 0",
+          "query": "SELECT \"value\" FROM $Scenarios WHERE $timeFilter and value > 0",
           "rawQuery": true,
           "refId": "A",
           "resultFormat": "time_series",
@@ -4847,18 +8036,1574 @@
           ]
         }
       ],
-      "title": "$Measurement (over time)",
+      "title": "$Scenarios (over time)",
       "type": "heatmap"
+    },
+    {
+      "datasource": {
+        "type": "influxdb",
+        "uid": "${DS_INFLUXDB-1}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "align": "auto",
+            "cellOptions": {
+              "type": "auto"
+            },
+            "filterable": false,
+            "inspect": false
+          },
+          "fieldMinMax": false,
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "transparent",
+                "value": null
+              },
+              {
+                "color": "#EAB839",
+                "value": 200
+              },
+              {
+                "color": "#E24D42",
+                "value": 500
+              }
+            ]
+          },
+          "unitScale": true
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "sum"
+            },
+            "properties": [
+              {
+                "id": "custom.hidden",
+                "value": true
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "count"
+            },
+            "properties": [
+              {
+                "id": "custom.hidden",
+                "value": true
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "sum / count"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Success"
+              },
+              {
+                "id": "unit",
+                "value": "percentunit"
+              },
+              {
+                "id": "thresholds",
+                "value": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "red",
+                      "value": null
+                    },
+                    {
+                      "color": "orange",
+                      "value": 0.6
+                    },
+                    {
+                      "color": "super-light-green",
+                      "value": 0.7
+                    },
+                    {
+                      "color": "light-green",
+                      "value": 0.8
+                    },
+                    {
+                      "color": "green",
+                      "value": 0.99
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "custom.cellOptions",
+                "value": {
+                  "mode": "gradient",
+                  "type": "color-background"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 7,
+        "w": 7,
+        "x": 0,
+        "y": 96
+      },
+      "id": 419,
+      "options": {
+        "cellHeight": "sm",
+        "footer": {
+          "countRows": false,
+          "enablePagination": false,
+          "fields": "",
+          "reducer": [],
+          "show": true
+        },
+        "showHeader": true,
+        "sortBy": [
+          {
+            "desc": true,
+            "displayName": "Time"
+          }
+        ]
+      },
+      "pluginVersion": "10.3.1",
+      "targets": [
+        {
+          "alias": "min",
+          "datasource": {
+            "type": "influxdb",
+            "uid": "${DS_INFLUXDB-1}"
+          },
+          "groupBy": [
+            {
+              "params": [
+                "check::tag"
+              ],
+              "type": "tag"
+            }
+          ],
+          "hide": false,
+          "measurement": "checks",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "query": "SELECT sum(\"value\"),  count(\"value\") FROM \"checks\" WHERE (\"scenario\"::tag = 'const_vus_scenario') AND $timeFilter GROUP BY \"check\"::tag",
+          "rawQuery": false,
+          "refId": "A",
+          "resultFormat": "table",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "sum"
+              }
+            ],
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "count"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "scenario::tag",
+              "operator": "=~",
+              "value": "/^$Scenarios$/"
+            }
+          ]
+        }
+      ],
+      "title": "Checks (all)",
+      "transformations": [
+        {
+          "id": "calculateField",
+          "options": {
+            "binary": {
+              "left": "sum",
+              "operator": "/",
+              "right": "count"
+            },
+            "mode": "binary",
+            "reduce": {
+              "reducer": "sum"
+            }
+          }
+        },
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              "Time": true
+            },
+            "includeByName": {},
+            "indexByName": {
+              "Time": 0,
+              "check": 1,
+              "count": 4,
+              "scenario": 2,
+              "sum": 3,
+              "sum / count": 5
+            },
+            "renameByName": {
+              "check": "Check",
+              "scenario": "Scenario",
+              "sum": ""
+            }
+          }
+        }
+      ],
+      "type": "table"
+    },
+    {
+      "datasource": {
+        "type": "influxdb",
+        "uid": "${DS_INFLUXDB-1}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "bars",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "ms",
+          "unitScale": true
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 7,
+        "w": 7,
+        "x": 7,
+        "y": 96
+      },
+      "id": 430,
+      "options": {
+        "legend": {
+          "calcs": [
+            "max",
+            "mean"
+          ],
+          "displayMode": "table",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "${DS_INFLUXDB-1}"
+          },
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "measurement": "http_reqs",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "A",
+          "resultFormat": "table",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "sum"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "scenario::tag",
+              "operator": "=~",
+              "value": "/^$Scenarios$/"
+            }
+          ]
+        }
+      ],
+      "title": "Requests per Second",
+      "transformations": [
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {},
+            "includeByName": {},
+            "indexByName": {},
+            "renameByName": {
+              "Time": "",
+              "http_reqs.sum": "http_reqs"
+            }
+          }
+        }
+      ],
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "influxdb",
+        "uid": "${DS_INFLUXDB-1}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "scaleDistribution": {
+              "type": "linear"
+            }
+          },
+          "fieldMinMax": false,
+          "unitScale": true
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 7,
+        "w": 10,
+        "x": 14,
+        "y": 96
+      },
+      "id": 431,
+      "options": {
+        "calculate": false,
+        "cellGap": 1,
+        "color": {
+          "exponent": 0.5,
+          "fill": "dark-orange",
+          "mode": "scheme",
+          "reverse": false,
+          "scale": "exponential",
+          "scheme": "Rainbow",
+          "steps": 64
+        },
+        "exemplars": {
+          "color": "rgba(255,0,255,0.7)"
+        },
+        "filterValues": {
+          "le": 1e-9
+        },
+        "legend": {
+          "show": true
+        },
+        "rowsFrame": {
+          "layout": "auto"
+        },
+        "tooltip": {
+          "mode": "single",
+          "showColorScale": false,
+          "yHistogram": false
+        },
+        "yAxis": {
+          "axisPlacement": "left",
+          "reverse": false
+        }
+      },
+      "pluginVersion": "10.3.1",
+      "targets": [
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "${DS_INFLUXDB-1}"
+          },
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "check::tag"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "measurement": "checks",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "sum"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "scenario::tag",
+              "operator": "=~",
+              "value": "/^$Scenarios$/"
+            }
+          ]
+        }
+      ],
+      "title": "Checks Per Second",
+      "transformations": [
+        {
+          "id": "renameByRegex",
+          "options": {
+            "regex": "checks.sum { check: (.*) }",
+            "renamePattern": "$1"
+          }
+        }
+      ],
+      "type": "heatmap"
+    },
+    {
+      "collapsed": true,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 103
+      },
+      "id": 3,
+      "panels": [
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "${DS_INFLUXDB-1}"
+          },
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "thresholds"
+              },
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green"
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
+                ]
+              },
+              "unitScale": true
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 4,
+            "w": 4,
+            "x": 0,
+            "y": 21
+          },
+          "id": 37,
+          "options": {
+            "colorMode": "value",
+            "graphMode": "area",
+            "justifyMode": "auto",
+            "orientation": "auto",
+            "reduceOptions": {
+              "calcs": [
+                "sum"
+              ],
+              "fields": "",
+              "values": false
+            },
+            "showPercentChange": false,
+            "textMode": "auto",
+            "wideLayout": true
+          },
+          "pluginVersion": "10.3.1",
+          "targets": [
+            {
+              "datasource": {
+                "type": "influxdb",
+                "uid": "${DS_INFLUXDB-1}"
+              },
+              "groupBy": [
+                {
+                  "params": [
+                    "$__interval"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "measurement": "/^$Measurement$/",
+              "orderByTime": "ASC",
+              "policy": "default",
+              "refId": "A",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "value"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "count"
+                  }
+                ]
+              ],
+              "tags": []
+            }
+          ],
+          "title": "$Measurement (count)",
+          "type": "stat"
+        },
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "${DS_INFLUXDB-1}"
+          },
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "thresholds"
+              },
+              "decimals": 2,
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green"
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
+                ]
+              },
+              "unit": "ms",
+              "unitScale": true
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 4,
+            "w": 4,
+            "x": 4,
+            "y": 21
+          },
+          "id": 33,
+          "options": {
+            "colorMode": "value",
+            "graphMode": "area",
+            "justifyMode": "auto",
+            "orientation": "auto",
+            "reduceOptions": {
+              "calcs": [
+                "max"
+              ],
+              "fields": "",
+              "values": false
+            },
+            "showPercentChange": false,
+            "textMode": "auto",
+            "wideLayout": true
+          },
+          "pluginVersion": "10.3.1",
+          "targets": [
+            {
+              "datasource": {
+                "type": "influxdb",
+                "uid": "${DS_INFLUXDB-1}"
+              },
+              "groupBy": [
+                {
+                  "params": [
+                    "$__interval"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "measurement": "/^$Measurement$/",
+              "orderByTime": "ASC",
+              "policy": "default",
+              "query": "SELECT mean(\"value\") FROM \"measurement\" WHERE $timeFilter GROUP BY time($__interval) fill(null)",
+              "rawQuery": false,
+              "refId": "A",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "value"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "max"
+                  }
+                ]
+              ],
+              "tags": []
+            }
+          ],
+          "title": "$Measurement (max)",
+          "type": "stat"
+        },
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "${DS_INFLUXDB-1}"
+          },
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "thresholds"
+              },
+              "decimals": 2,
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green"
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
+                ]
+              },
+              "unit": "ms",
+              "unitScale": true
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 4,
+            "w": 4,
+            "x": 8,
+            "y": 21
+          },
+          "id": 35,
+          "options": {
+            "colorMode": "value",
+            "graphMode": "area",
+            "justifyMode": "auto",
+            "orientation": "auto",
+            "reduceOptions": {
+              "calcs": [
+                "min"
+              ],
+              "fields": "",
+              "values": false
+            },
+            "showPercentChange": false,
+            "textMode": "auto",
+            "wideLayout": true
+          },
+          "pluginVersion": "10.3.1",
+          "targets": [
+            {
+              "datasource": {
+                "type": "influxdb",
+                "uid": "${DS_INFLUXDB-1}"
+              },
+              "groupBy": [
+                {
+                  "params": [
+                    "$__interval"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "measurement": "/^$Measurement$/",
+              "orderByTime": "ASC",
+              "policy": "default",
+              "query": "SELECT mean(\"value\") FROM \"measurement\" WHERE $timeFilter GROUP BY time($__interval) fill(null)",
+              "rawQuery": false,
+              "refId": "A",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "value"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "min"
+                  }
+                ]
+              ],
+              "tags": []
+            }
+          ],
+          "title": "$Measurement (min)",
+          "type": "stat"
+        },
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "${DS_INFLUXDB-1}"
+          },
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "thresholds"
+              },
+              "decimals": 2,
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green"
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
+                ]
+              },
+              "unit": "ms",
+              "unitScale": true
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 4,
+            "w": 4,
+            "x": 12,
+            "y": 21
+          },
+          "id": 32,
+          "options": {
+            "colorMode": "value",
+            "graphMode": "area",
+            "justifyMode": "auto",
+            "orientation": "auto",
+            "reduceOptions": {
+              "calcs": [
+                "mean"
+              ],
+              "fields": "",
+              "values": false
+            },
+            "showPercentChange": false,
+            "textMode": "auto",
+            "wideLayout": true
+          },
+          "pluginVersion": "10.3.1",
+          "targets": [
+            {
+              "datasource": {
+                "type": "influxdb",
+                "uid": "${DS_INFLUXDB-1}"
+              },
+              "groupBy": [
+                {
+                  "params": [
+                    "$__interval"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "measurement": "/^$Measurement$/",
+              "orderByTime": "ASC",
+              "policy": "default",
+              "query": "SELECT mean(\"value\") FROM \"measurement\" WHERE $timeFilter GROUP BY time($__interval) fill(null)",
+              "rawQuery": false,
+              "refId": "A",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "value"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "mean"
+                  }
+                ]
+              ],
+              "tags": []
+            }
+          ],
+          "title": "$Measurement (mean)",
+          "type": "stat"
+        },
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "${DS_INFLUXDB-1}"
+          },
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "thresholds"
+              },
+              "decimals": 2,
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green"
+                  },
+                  {
+                    "color": "red",
+                    "value": 800
+                  }
+                ]
+              },
+              "unit": "ms",
+              "unitScale": true
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 4,
+            "w": 4,
+            "x": 16,
+            "y": 21
+          },
+          "id": 34,
+          "options": {
+            "colorMode": "value",
+            "graphMode": "area",
+            "justifyMode": "auto",
+            "orientation": "auto",
+            "reduceOptions": {
+              "calcs": [
+                "mean"
+              ],
+              "fields": "",
+              "values": false
+            },
+            "showPercentChange": false,
+            "textMode": "auto",
+            "wideLayout": true
+          },
+          "pluginVersion": "10.3.1",
+          "targets": [
+            {
+              "datasource": {
+                "type": "influxdb",
+                "uid": "${DS_INFLUXDB-1}"
+              },
+              "groupBy": [
+                {
+                  "params": [
+                    "$__interval"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "measurement": "/^$Measurement$/",
+              "orderByTime": "ASC",
+              "policy": "default",
+              "query": "SELECT mean(\"value\") FROM \"measurement\" WHERE $timeFilter GROUP BY time($__interval) fill(null)",
+              "rawQuery": false,
+              "refId": "A",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "value"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "median"
+                  }
+                ]
+              ],
+              "tags": []
+            }
+          ],
+          "title": "$Measurement (median)",
+          "type": "stat"
+        },
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "${DS_INFLUXDB-1}"
+          },
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "thresholds"
+              },
+              "decimals": 2,
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green"
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
+                ]
+              },
+              "unit": "ms",
+              "unitScale": true
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 4,
+            "w": 4,
+            "x": 20,
+            "y": 21
+          },
+          "id": 36,
+          "options": {
+            "colorMode": "value",
+            "graphMode": "area",
+            "justifyMode": "auto",
+            "orientation": "auto",
+            "reduceOptions": {
+              "calcs": [
+                "mean"
+              ],
+              "fields": "",
+              "values": false
+            },
+            "showPercentChange": false,
+            "textMode": "auto",
+            "wideLayout": true
+          },
+          "pluginVersion": "10.3.1",
+          "targets": [
+            {
+              "datasource": {
+                "type": "influxdb",
+                "uid": "${DS_INFLUXDB-1}"
+              },
+              "groupBy": [],
+              "measurement": "/^$Measurement$/",
+              "orderByTime": "ASC",
+              "policy": "default",
+              "query": "SELECT mean(\"value\") FROM \"measurement\" WHERE $timeFilter GROUP BY time($__interval) fill(null)",
+              "rawQuery": false,
+              "refId": "A",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "value"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [
+                      95
+                    ],
+                    "type": "percentile"
+                  }
+                ]
+              ]
+            }
+          ],
+          "title": "$Measurement (p95)",
+          "type": "stat"
+        },
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "${DS_INFLUXDB-1}"
+          },
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "palette-classic"
+              },
+              "custom": {
+                "axisBorderShow": false,
+                "axisCenteredZero": false,
+                "axisColorMode": "text",
+                "axisLabel": "",
+                "axisPlacement": "auto",
+                "barAlignment": -1,
+                "drawStyle": "bars",
+                "fillOpacity": 0,
+                "gradientMode": "none",
+                "hideFrom": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": false
+                },
+                "insertNulls": false,
+                "lineInterpolation": "linear",
+                "lineStyle": {
+                  "fill": "solid"
+                },
+                "lineWidth": 1,
+                "pointSize": 5,
+                "scaleDistribution": {
+                  "type": "linear"
+                },
+                "showPoints": "always",
+                "spanNulls": false,
+                "stacking": {
+                  "group": "A",
+                  "mode": "none"
+                },
+                "thresholdsStyle": {
+                  "mode": "off"
+                }
+              },
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green"
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
+                ]
+              },
+              "unit": "ms",
+              "unitScale": true
+            },
+            "overrides": [
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "http_req_duration.max"
+                },
+                "properties": [
+                  {
+                    "id": "displayName",
+                    "value": "Max"
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "http_req_duration.percentile"
+                },
+                "properties": [
+                  {
+                    "id": "displayName",
+                    "value": "P95"
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "http_req_duration.min"
+                },
+                "properties": [
+                  {
+                    "id": "displayName",
+                    "value": "Min"
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "http_req_duration.median"
+                },
+                "properties": [
+                  {
+                    "id": "displayName",
+                    "value": "Median"
+                  }
+                ]
+              },
+              {
+                "__systemRef": "hideSeriesFrom",
+                "matcher": {
+                  "id": "byNames",
+                  "options": {
+                    "mode": "exclude",
+                    "names": [
+                      "median"
+                    ],
+                    "prefix": "All except:",
+                    "readOnly": true
+                  }
+                },
+                "properties": [
+                  {
+                    "id": "custom.hideFrom",
+                    "value": {
+                      "legend": false,
+                      "tooltip": false,
+                      "viz": true
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          "gridPos": {
+            "h": 8,
+            "w": 12,
+            "x": 0,
+            "y": 25
+          },
+          "id": 16,
+          "options": {
+            "legend": {
+              "calcs": [],
+              "displayMode": "list",
+              "placement": "bottom",
+              "showLegend": true
+            },
+            "tooltip": {
+              "mode": "single",
+              "sort": "none"
+            }
+          },
+          "targets": [
+            {
+              "datasource": {
+                "type": "influxdb",
+                "uid": "${DS_INFLUXDB-1}"
+              },
+              "groupBy": [
+                {
+                  "params": [
+                    "$__interval"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "measurement": "/^$Measurement$/",
+              "orderByTime": "ASC",
+              "policy": "default",
+              "query": "SELECT max(\"value\") FROM /^$Measurement$/ WHERE $timeFilter and value > 0 GROUP BY time($__interval) fill(null)",
+              "rawQuery": false,
+              "refId": "A",
+              "resultFormat": "table",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "value"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "max"
+                  }
+                ]
+              ],
+              "tags": []
+            },
+            {
+              "datasource": {
+                "type": "influxdb",
+                "uid": "${DS_INFLUXDB-1}"
+              },
+              "groupBy": [
+                {
+                  "params": [
+                    "$__interval"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "hide": false,
+              "measurement": "/^$Measurement$/",
+              "orderByTime": "ASC",
+              "policy": "default",
+              "query": "SELECT percentile(\"value\", 90) FROM /^$Measurement$/ WHERE $timeFilter GROUP BY time($__interval) fill(null)",
+              "rawQuery": false,
+              "refId": "B",
+              "resultFormat": "table",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "value"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [
+                      95
+                    ],
+                    "type": "percentile"
+                  }
+                ]
+              ],
+              "tags": []
+            },
+            {
+              "datasource": {
+                "type": "influxdb",
+                "uid": "${DS_INFLUXDB-1}"
+              },
+              "groupBy": [
+                {
+                  "params": [
+                    "$__interval"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "hide": false,
+              "measurement": "/^$Measurement$/",
+              "orderByTime": "ASC",
+              "policy": "default",
+              "refId": "C",
+              "resultFormat": "table",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "value"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "min"
+                  }
+                ]
+              ],
+              "tags": []
+            },
+            {
+              "datasource": {
+                "type": "influxdb",
+                "uid": "${DS_INFLUXDB-1}"
+              },
+              "groupBy": [
+                {
+                  "params": [
+                    "$__interval"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "hide": false,
+              "measurement": "/^$Measurement$/",
+              "orderByTime": "ASC",
+              "policy": "default",
+              "refId": "D",
+              "resultFormat": "table",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "value"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "median"
+                  }
+                ]
+              ],
+              "tags": []
+            }
+          ],
+          "title": "$Measurement (over time)",
+          "type": "timeseries"
+        },
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "${DS_INFLUXDB-1}"
+          },
+          "fieldConfig": {
+            "defaults": {
+              "custom": {
+                "hideFrom": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": false
+                },
+                "scaleDistribution": {
+                  "type": "linear"
+                }
+              },
+              "unitScale": true
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 8,
+            "w": 12,
+            "x": 12,
+            "y": 25
+          },
+          "id": 80,
+          "options": {
+            "calculate": true,
+            "calculation": {
+              "yBuckets": {
+                "scale": {
+                  "log": 2,
+                  "type": "log"
+                }
+              }
+            },
+            "cellGap": 1,
+            "color": {
+              "exponent": 0.5,
+              "fill": "dark-orange",
+              "mode": "scheme",
+              "reverse": false,
+              "scale": "exponential",
+              "scheme": "Rainbow",
+              "steps": 64
+            },
+            "exemplars": {
+              "color": "rgba(255,0,255,0.7)"
+            },
+            "filterValues": {
+              "le": 1e-9
+            },
+            "legend": {
+              "show": true
+            },
+            "rowsFrame": {
+              "layout": "auto"
+            },
+            "tooltip": {
+              "mode": "single",
+              "showColorScale": false,
+              "yHistogram": false
+            },
+            "yAxis": {
+              "axisPlacement": "left",
+              "reverse": false,
+              "unit": "ms"
+            }
+          },
+          "pluginVersion": "10.3.1",
+          "targets": [
+            {
+              "datasource": {
+                "type": "influxdb",
+                "uid": "${DS_INFLUXDB-1}"
+              },
+              "groupBy": [],
+              "measurement": "/^$Measurement$/",
+              "orderByTime": "ASC",
+              "policy": "default",
+              "query": "SELECT \"value\" FROM $Measurement WHERE $timeFilter and value > 0",
+              "rawQuery": true,
+              "refId": "A",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "value"
+                    ],
+                    "type": "field"
+                  }
+                ]
+              ],
+              "tags": [
+                {
+                  "key": "name",
+                  "operator": "=~",
+                  "value": "/^$URL$/"
+                }
+              ]
+            }
+          ],
+          "title": "$Measurement (over time)",
+          "type": "heatmap"
+        }
+      ],
+      "repeat": "Measurement",
+      "repeatDirection": "h",
+      "title": "$Measurement",
+      "type": "row"
     }
   ],
-  "refresh": "5s",
+  "refresh": "",
   "schemaVersion": 39,
   "tags": [],
   "templating": {
     "list": [
       {
         "current": {
-          "selected": true,
+          "selected": false,
           "text": [
             "http_req_duration"
           ],
@@ -4893,6 +9638,11 @@
           },
           {
             "selected": false,
+            "text": "http_req_looking_up",
+            "value": "http_req_looking_up"
+          },
+          {
+            "selected": false,
             "text": "http_req_receiving",
             "value": "http_req_receiving"
           },
@@ -4911,6 +9661,62 @@
         "queryValue": "",
         "skipUrlSync": false,
         "type": "custom"
+      },
+      {
+        "current": {
+          "selected": true,
+          "text": [
+            "const_vus_scenario"
+          ],
+          "value": [
+            "const_vus_scenario"
+          ]
+        },
+        "hide": 0,
+        "includeAll": true,
+        "multi": true,
+        "name": "Scenarios",
+        "options": [
+          {
+            "selected": false,
+            "text": "All",
+            "value": "$__all"
+          },
+          {
+            "selected": true,
+            "text": "const_vus_scenario",
+            "value": "const_vus_scenario"
+          },
+          {
+            "selected": false,
+            "text": "shared_iter_scenario",
+            "value": "shared_iter_scenario"
+          },
+          {
+            "selected": false,
+            "text": "per_vu_scenario",
+            "value": "per_vu_scenario"
+          },
+          {
+            "selected": false,
+            "text": "const_arrival_rate_scenario",
+            "value": "const_arrival_rate_scenario"
+          },
+          {
+            "selected": false,
+            "text": "ramp_arrival_rate_scenario",
+            "value": "ramp_arrival_rate_scenario"
+          },
+          {
+            "selected": false,
+            "text": "ext_controlled_scenario",
+            "value": "ext_controlled_scenario"
+          }
+        ],
+        "query": "const_vus_scenario, shared_iter_scenario, per_vu_scenario, const_arrival_rate_scenario, ramp_arrival_rate_scenario, ext_controlled_scenario",
+        "queryValue": "",
+        "skipUrlSync": false,
+        "type": "custom"
       }
     ]
   },
@@ -4922,6 +9728,6 @@
   "timezone": "browser",
   "title": "DocSpace dashboard",
   "uid": "ac4ed3f9-decf-4165-aa60-b0eadec6f9dc",
-  "version": 44,
+  "version": 64,
   "weekStart": ""
 }
