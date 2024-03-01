@@ -1,25 +1,26 @@
 import { auth } from '../config/auth.js';
-import { fastTest } from "../config/options.js";
-import { FileCRUD, createFile, getFile, updateFile, deleteFile, getFolderMyId } from './CRUD.js';
-import { shared_iter_scenario, const_arrival_rate_scenario, const_vus_scenario, per_vu_scenario } from '../config/scenarios.js';
-import { folderMy } from '../config/index.js';
 import { foldersAndFiles } from '../data/data.js';
+import { FileCRUD, createFile, getFile, updateFile, deleteFile, getFolderMyId } from './CRUD.js';
+import { setScenarios } from '../config/scenarios.js';
+import { folderMy, filesCountFolderMy, foldersCountFolderMy, setParams } from '../config/index.js';
+import { setMetrics } from '../config/metrics.js';
 
-export const options = { scenarios: {shared_iter_scenario, per_vu_scenario}};
+export const options = { 
+    scenarios: setScenarios(),
+    summaryTrendStats: ['avg', 'min', 'med', 'max', 'p(90)', 'p(95)', 'p(99)', 'count'],
+    thresholds: {},
+};
 
 export function setup() {
     var authToken = auth();
-    foldersAndFiles(10, 10, folderMy, authToken);
-    return authToken;
+    foldersAndFiles(foldersCountFolderMy, filesCountFolderMy, folderMy, authToken);
+    let params = setParams(authToken);
+    const idMy = getFolderMyId(params);
+    return {params, idMy};
 };
 
-export default function (authToken) {
-    let params = {
-        headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `${authToken}`,
-        }
-    };
-    const idMy = getFolderMyId(params);
-    FileCRUD(idMy, params);
-}
+let customMetrics = setMetrics(options);
+
+export default function ({params, idMy}) {
+    FileCRUD(idMy, params, customMetrics, __ENV.MY_SCENARIO);
+};

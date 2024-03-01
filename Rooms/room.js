@@ -1,20 +1,22 @@
 import { auth } from '../config/auth.js';
-import { fastTest } from '../config/options.js';
 import { RoomCRUD, createRoom, getRoomInfo, renameRoom, removeRoom } from './CRUD.js';
-import { sharedIterations } from '../config/scenarios.js';
+import { setScenarios } from '../config/scenarios.js';
+import { setMetrics } from '../config/metrics.js';
+import { setParams } from '../config/index.js';
 
-export const options = fastTest;
-
-export function setup() {
-    return auth();
+export const options = { 
+    scenarios: setScenarios(),
+    summaryTrendStats: ['avg', 'min', 'med', 'max', 'p(90)', 'p(95)', 'p(99)', 'count'],
 };
 
-export default function (auth) {
-    let params = {
-        headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `${auth}`,
-        }
-    };
-    RoomCRUD(params);
+let customMetrics = setMetrics(options);
+
+export function setup() {
+    var authToken = auth();
+    let params = setParams(authToken);
+    return params;
+};
+
+export default function (params) {
+    RoomCRUD(params, customMetrics, __ENV.MY_SCENARIO);
 }

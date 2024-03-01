@@ -1,14 +1,10 @@
 import http from 'k6/http';
 import faker  from 'https://cdnjs.cloudflare.com/ajax/libs/Faker/3.1.0/faker.min.js';
-import { basePath } from '../config/index.js';
+import { basePath, setParams } from '../config/index.js';
 
 export function foldersAndFiles(countFolders, countFiles, typeFolder, auth){
-    let params = {
-        headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `${auth}`,
-        }
-    };
+    let params = setParams(auth);
+    
     const res = http.get(typeFolder, params);
     const id = res.json().response.current.id;
     if(countFolders){

@@ -1,83 +1,127 @@
+import exec from 'k6/execution';
 
-/*
-The shared-iterations executor shares iterations between the number of VUs. The test ends once k6 executes all iterations.
-maxDuration - Maximum scenario duration before it's forcibly stopped (excluding gracefulStop).
-*/
-export const shared_iter_scenario = {
-    executor: "shared-iterations",
-    vus: 1000,
-    iterations: 1000,
-    startTime: "3m",
+import { constVusScenarioSettings, sharedIterationScenarioSettings, perVuScenarioSettings, constArrivalRateScenarioSettings, rampArrivalRateScenarioSettings, extControlledScenarioSettings,
+ sISIterations, sISVUs, sISmaxDuration, sISstartTime, sISgracefulStop,
+ pVUIterations, pVUVUs, pVUmaxDuration, pVUstartTime,  pVUgracefulStop,
+ cVUDuration, cVUVUs, cVUstartTime, cVUgracefulStop,
+ cARDuration, cARmaxVUs, cARpreAllocatedVUs, cARrate, cARstartTime, cARtimeUnit, cARgracefulStop,
+ rARmaxVUs, rARpreAllocatedVUs, rARstages, rARstartRate, rARstartTime, rARtimeUnit, rARgracefulStop,
+ eCduration, eCmaxVUs, eCstartTime, eCvus 
+} from './index.js';
+
+const shared_iter_scenario = {
+    executor: 'shared-iterations',
+    vus: sISVUs,
+    iterations: sISIterations,
+    startTime: sISstartTime,
+    maxDuration: sISmaxDuration,
+    gracefulStop: sISgracefulStop,
+    env: { SCENARIO: 'shared-iterations' },
 };
 
-/*
-With the per-vu-iterations executor, each VU executes an exact number of iterations. The total number of completed iterations equals vus * iterations.
-*/
-export const per_vu_scenario = {
+const per_vu_scenario = {
     executor: 'per-vu-iterations',
-    vus: 100,
-    iterations: 20,
-    maxDuration: '5m',
-    startTime: "30s",
+    vus: pVUVUs,
+    iterations: pVUIterations,
+    maxDuration: pVUmaxDuration,
+    startTime: pVUstartTime,
+    gracefulStop: pVUgracefulStop,
+    env: { SCENARIO: 'per-vu-iterations' },
 };
 
-/*
-With the constant-vus executor, a fixed number of VUs execute as many iterations as possible for a specified amount of time.
-*/
-export const const_vus_scenario = {
+const const_vus_scenario = {
     executor: 'constant-vus', 
-    vus: 10,
-    duration: '30s',
+    vus: cVUVUs,
+    duration: cVUDuration,
+    startTime: cVUstartTime,
+    gracefulStop: cVUgracefulStop,
+    env: { SCENARIO: 'constant-vus' },
 };
 
-/*
-With the constant-arrival-rate executor, k6 starts a fixed number of iterations over a specified period of time. It is an open-model executor, meaning iterations start independently of system response 
-*/
-export const const_arrival_rate_scenario = {
+const const_arrival_rate_scenario = {
     executor: 'constant-arrival-rate',
-
-    // How long the test lasts
-    duration: '30s',
-      
-    // How many iterations per timeUnit
-    rate: 30,
-      
-    // Start `rate` iterations per second
-    timeUnit: '1s',
-      
-    // Pre-allocate VUs
-    preAllocatedVUs: 50,
+    duration: cARDuration,
+    rate: cARrate,
+    timeUnit: cARtimeUnit,
+    preAllocatedVUs: cARpreAllocatedVUs,
+    maxVUs: cARmaxVUs,
+    startTime: cARstartTime,
+    gracefulStop: cARgracefulStop,
+    env: { SCENARIO: 'constant-arrival-rate' },
 };
 
-/*
-With the ramping-arrival-rate executor, k6 starts iterations at a variable rate. It is an open-model executor, meaning iterations start independently of system response
-*/
-export const ramp_arrival_rate_scenario = {
+const ramp_arrival_rate_scenario = {
     executor: 'ramping-arrival-rate',
-    // Start iterations per `timeUnit`
-    startRate: 300,
-    // Start `startRate` iterations per minute
-    timeUnit: '1m',
-    // Pre-allocate necessary VUs.
-    preAllocatedVUs: 50,
-    stages: [
-        // Start 300 iterations per `timeUnit` for the first minute.
-        { target: 300, duration: '1m' },
-        // Linearly ramp-up to starting 600 iterations per `timeUnit` over the following two minutes.
-        { target: 600, duration: '2m' },
-        // Continue starting 600 iterations per `timeUnit` for the following four minutes.
-        { target: 600, duration: '4m' },
-        // Linearly ramp-down to starting 60 iterations per `timeUnit` over the last two minutes.
-        { target: 60, duration: '2m' },
-    ],
+    startRate: rARstartRate,
+    timeUnit: rARtimeUnit,
+    preAllocatedVUs: rARpreAllocatedVUs,
+    stages: rARstages,
+    maxVUs: rARmaxVUs,
+    startTime: rARstartTime,
+    gracefulStop: rARgracefulStop,
+    env: { SCENARIO: 'ramping-arrival-rate' },
 };
 
-/*
-Externally controlled - control and scale execution at runtime
-*/
-export const ext_controlled_scenario = {
+const ext_controlled_scenario = {
     executor: 'externally-controlled',
-    vus: 10,
-    maxVUs: 50,
-    duration: '10m',
+    vus: eCvus,
+    maxVUs: eCmaxVUs,
+    duration: eCduration,
+    startTime: eCstartTime,
+    env: { SCENARIO: 'externally-controlled' },
 };
+
+export function setScenarios() {
+    let scenarios = {
+        const_vus_scenario, 
+        shared_iter_scenario,
+        per_vu_scenario,
+        const_arrival_rate_scenario,
+        ramp_arrival_rate_scenario,
+        ext_controlled_scenario,
+    }
+    if(constVusScenarioSettings == false){
+        delete scenarios.const_vus_scenario;
+    }
+    if(sharedIterationScenarioSettings == false){
+        delete scenarios.shared_iter_scenario;
+    }
+    if(perVuScenarioSettings == false){
+        delete scenarios.per_vu_scenario;
+    }
+    if(constArrivalRateScenarioSettings == false){
+        delete scenarios.const_arrival_rate_scenario;
+    }
+    if(rampArrivalRateScenarioSettings == false){
+        delete scenarios.ramp_arrival_rate_scenario;
+    }
+    if(extControlledScenarioSettings == false){
+        delete scenarios.ext_controlled_scenario;
+    }
+    return scenarios;
+}
+
+export function getScenarioData()
+{
+    const tag = exec.vu.tags['scenario'];
+    let jsonData = JSON.parse(JSON.stringify(exec.test.options.scenarios[`${tag}`]));
+    let scenarioData = {
+        scenario_executor: `${jsonData['executor']}`,
+        scenario_startTime: `${jsonData['startTime']}`,
+        scenario_gracefulStop: `${jsonData['gracefulStop']}`,
+        scenario_exec: `${jsonData['exec']}`,
+        scenario_vus: `${jsonData['vus']}`,
+        scenario_duration: `${jsonData['duration']}`,
+        scenario_iterations: `${jsonData['iterations']}`,
+        scenario_maxDuration: `${jsonData['maxDuration']}`,
+        scenario_stages: JSON.stringify(`${jsonData['stages']}`),
+        scenario_gracefulRampDown: `${jsonData['gracefulRampDown']}`,
+        scenario_startVUs: `${jsonData['startVUs']}`,
+        scenario_preAllocatedVUs: `${jsonData['preAllocatedVUs']}`,
+        scenario_rate: `${jsonData['rate']}`,
+        scenario_maxVUs: `${jsonData['maxVUs']}`,
+        scenario_timeUnit: `${jsonData['timeUnit']}`,
+        scenario_startRate: `${jsonData['startRate']}`,
+    }
+    return scenarioData;
+}
