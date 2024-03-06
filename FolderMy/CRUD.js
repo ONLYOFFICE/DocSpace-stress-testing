@@ -151,8 +151,7 @@ params - headers
 export function createFile(id, params, trend, environment){
     const fileTitle = faker.system.commonFileName('docx');
     const payload = JSON.stringify({
-        title:	fileTitle,
-        EnableExternalExt: true,
+        title:	fileTitle
     });
 
     let URL = `${basePath}files/${id}/file`;
