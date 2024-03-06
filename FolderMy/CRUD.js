@@ -156,7 +156,6 @@ export function createFile(id, params, trend, environment){
     });
 
     let URL = `${basePath}files/${id}/file`;
-    let scenarioData = getScenarioData();
     const res = http.post(URL, payload, {
         headers: params.headers,
         tags: addTagsDefault(true, 'Create file'),
