@@ -101,7 +101,7 @@ export function setScenarios() {
     return scenarios;
 }
 
-export function getScenarioData()
+function getScenarioData()
 {
     const tag = exec.vu.tags['scenario'];
     let jsonData = JSON.parse(JSON.stringify(exec.test.options.scenarios[`${tag}`]));
@@ -124,4 +124,32 @@ export function getScenarioData()
         scenario_startRate: `${jsonData['startRate']}`,
     }
     return scenarioData;
+}
+
+export function addTagsDefault(def, property){
+    let tags = {};
+    let scenarioData = getScenarioData();
+    if(def == true)
+    {
+        tags = {
+            scenario_executor: scenarioData.scenario_executor,
+            scenario_startTime: scenarioData.scenario_startTime,
+            scenario_gracefulStop: scenarioData.scenario_gracefulStop,
+            scenario_exec: scenarioData.scenario_exec,
+            scenario_vus: scenarioData.scenario_vus,
+            scenario_duration: scenarioData.scenario_duration,
+            scenario_iterations: scenarioData.scenario_iterations,
+            scenario_maxDuration: scenarioData.scenario_maxDuration,
+            scenario_stages: scenarioData.scenario_stages,
+            scenario_gracefulRampDown: scenarioData.scenario_gracefulRampDown,
+            scenario_startVUs: scenarioData.scenario_startVUs,
+            scenario_preAllocatedVUs: scenarioData.scenario_preAllocatedVUs,
+            scenario_rate: scenarioData.scenario_rate,
+            scenario_maxVUs: scenarioData.scenario_maxVUs,
+            scenario_timeUnit: scenarioData.scenario_timeUnit,
+            scenario_startRate: scenarioData.scenario_startRate,
+            property: property,
+        };
+        return tags;
+    }
 }
