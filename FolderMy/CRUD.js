@@ -3,7 +3,7 @@ import { check, group } from 'k6';
 import faker  from 'https://cdnjs.cloudflare.com/ajax/libs/Faker/3.1.0/faker.min.js';
 import exec from 'k6/execution';
 
-import { folderMy, basePath } from '../config/index.js';
+import { folderMy, basePath, path} from '../config/index.js';
 import { addTagsDefault } from '../config/scenarios.js';
 
 /*-------------------------------------------------FOLDER-------------------------------------------------*/
@@ -36,7 +36,7 @@ export function createFolder(id, params, trend, environment){
         'Cretion folder status': res => res.status === 200,
         'Folder title': res => res.json().response.title === folderTitle,
     });
-    trend[environment].add(res.timings.duration, { url: res.request.url, status: res.status, method: res.request.method,});
+    trend[environment].add(res.timings.duration, { api: `${path}files/folder/{id}`, status: res.status, method: res.request.method,});
     return res.json().response.id; 
 }
 
@@ -55,7 +55,7 @@ export function getFolder(id, params, trend, environment){
         'Get folder info status': res => res.status === 200,
         'Folder id': res => res.json().response.id === id,
     });
-    trend[environment].add(res.timings.duration, { url: res.request.url, status: res.status, method: res.request.method,});
+    trend[environment].add(res.timings.duration, { api: `${path}files/folder/{id}`, status: res.status, method: res.request.method,});
 }
 
 /*
@@ -77,7 +77,7 @@ export function updateFolder(id, params, trend, environment){
         'Update folder status': res => res.status === 200,
         'Folder title': res => res.json().response.title === folderTitle,
     });
-    trend[environment].add(res.timings.duration, { url: res.request.url, status: res.status, method: res.request.method,});
+    trend[environment].add(res.timings.duration, { api: `${path}files/folder/{id}`, status: res.status, method: res.request.method,});
 }
 
 /*
@@ -95,7 +95,7 @@ export function deleteFolder(id, params, trend, environment){
         tags: addTagsDefault(true, 'Delete folder'),
     });
     check(res, { 'Folder delete status': res => res.status === 200 });
-    trend[environment].add(res.timings.duration, { url: res.request.url, status: res.status, method: res.request.method,});
+    trend[environment].add(res.timings.duration, { api: `${path}files/folder/{id}`, status: res.status, method: res.request.method,});
 }
 
 /*
@@ -116,7 +116,7 @@ export function insertFileInFolder(id, params, trend, environment){
         tags: addTagsDefault(true, 'Insert file in specified folder'),
     });
     check(res, { 'Insertion file status': res => res.status === 200 });
-    trend[environment].add(res.timings.duration, { url: res.request.url, status: res.status, method: res.request.method,});
+    trend[environment].add(res.timings.duration, { api: res.request.url, status: res.status, method: res.request.method,});
 }
 
 export function FolderCRUD(idMy, params, trend, environment) {
@@ -163,7 +163,7 @@ export function createFile(id, params, trend, environment){
         'Cretion file status': res => res.status === 200,
         'File title': res => res.json().response.title === fileTitle,
     });
-    trend[environment].add(res.timings.duration, { url: res.request.url, status: res.status, method: res.request.method,});
+    trend[environment].add(res.timings.duration, { api: `${path}files/{id}/file`, status: res.status, method: res.request.method,});
     return res.json().response.id;
 }
 
@@ -182,7 +182,7 @@ export function getFile(id, params, trend, environment){
         'Get file info status': res => res.status === 200,
         'File id': res => res.json().response.id === id,
     });
-    trend[environment].add(res.timings.duration, { url: res.request.url, status: res.status, method: res.request.method,});
+    trend[environment].add(res.timings.duration, { api: `${path}files/file/{id}`, status: res.status, method: res.request.method,});
 }
 
 /*
@@ -204,7 +204,7 @@ export function updateFile(id, params, trend, environment){
         'Update file status': res => res.status === 200,
         'File title': res => res.json().response.title === fileTitle,
     });
-    trend[environment].add(res.timings.duration, { url: res.request.url, status: res.status, method: res.request.method, });
+    trend[environment].add(res.timings.duration, { api: `${path}files/file/{id}`, status: res.status, method: res.request.method, });
 
 }
 
@@ -224,7 +224,7 @@ export function deleteFile(id, params, trend, environment){
         tags: addTagsDefault(true, 'Delete file'),
     });
     check(res, { 'File delete status': res => res.status === 200 });
-    trend[environment].add(res.timings.duration, { url: res.request.url,  status: res.status, method: res.request.method,});
+    trend[environment].add(res.timings.duration, { api: `${path}files/file/{id}`,  status: res.status, method: res.request.method,});
 }
 
 export function FileCRUD(idMy, params, trend, environment){

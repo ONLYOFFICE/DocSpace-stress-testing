@@ -7,7 +7,8 @@ export const wizardData = { Email : `${email}`, PasswordHash : `${password}`,}
 
 
 /*--------------------------------------------------------Base URL's--------------------------------------------------------*/
-export const basePath = 'http://localhost:8092/api/2.0/';
+export const path = 'api/2.0/'
+export const basePath = `http://localhost:8092/${path}`;
 
 export const folderMy = `${basePath}files/@my`;
 export const folderCommon = `${basePath}files/@common`;
