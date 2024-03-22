@@ -32,12 +32,13 @@ export function createFolder(id, params, trend, environment){
         headers: params.headers, 
         tags: addTagsDefault(true, 'Create folder'),
     });
-    check(res, {
-        'Cretion folder status': res => res.status === 200,
-        'Folder title': res => res.json().response.title === folderTitle,
-    });
+    let idMy = null;
+    if(check(res, {'Cretion folder status': res => res.status === 200})){
+        idMy = res.json().response.id;
+        check(res, {'Folder title': res => res.json().response.title === folderTitle});
+    }
     trend[environment].add(res.timings.duration, { api: `${path}files/folder/{id}`, status: res.status, method: res.request.method,});
-    return res.json().response.id; 
+    return idMy; 
 }
 
 /*
@@ -51,10 +52,9 @@ export function getFolder(id, params, trend, environment){
         headers: params.headers, 
         tags: addTagsDefault(true, 'Get folder info'),
     });
-    check(res, {
-        'Get folder info status': res => res.status === 200,
-        'Folder id': res => res.json().response.id === id,
-    });
+    if(check(res, {'Get folder info status': res => res.status === 200})){
+        check(res, {'Folder id': res => res.json().response.id === id});
+    }
     trend[environment].add(res.timings.duration, { api: `${path}files/folder/{id}`, status: res.status, method: res.request.method,});
 }
 
@@ -73,10 +73,9 @@ export function updateFolder(id, params, trend, environment){
         headers: params.headers, 
         tags: addTagsDefault(true, 'Update folder title'),
     });
-    check(res, {
-        'Update folder status': res => res.status === 200,
-        'Folder title': res => res.json().response.title === folderTitle,
-    });
+    if(check(res, {'Update folder status': res => res.status === 200})){
+        check(res, {'Folder title': res => res.json().response.title === folderTitle});
+    }
     trend[environment].add(res.timings.duration, { api: `${path}files/folder/{id}`, status: res.status, method: res.request.method,});
 }
 
@@ -151,7 +150,8 @@ params - headers
 export function createFile(id, params, trend, environment){
     const fileTitle = faker.system.commonFileName('docx');
     const payload = JSON.stringify({
-        title:	fileTitle
+        title:	fileTitle,
+        EnableExternalExt: true,
     });
 
     let URL = `${basePath}files/${id}/file`;
@@ -159,12 +159,13 @@ export function createFile(id, params, trend, environment){
         headers: params.headers,
         tags: addTagsDefault(true, 'Create file'),
     });
-    check(res, {
-        'Cretion file status': res => res.status === 200,
-        'File title': res => res.json().response.title === fileTitle,
-    });
+    let idMy = null;
+    if(check(res, {'Cretion file status': res => res.status === 200})){
+        idMy = res.json().response.id;
+        check(res, {'File title': res => res.json().response.title === fileTitle});
+    }
     trend[environment].add(res.timings.duration, { api: `${path}files/{id}/file`, status: res.status, method: res.request.method,});
-    return res.json().response.id;
+    return idMy;
 }
 
 /*
@@ -178,10 +179,9 @@ export function getFile(id, params, trend, environment){
         headers: params.headers, 
         tags: addTagsDefault(true, 'Get file info'),
     });
-    check(res, {
-        'Get file info status': res => res.status === 200,
-        'File id': res => res.json().response.id === id,
-    });
+    if(check(res, {'Get file info status': res => res.status === 200})){
+        check(res, {'File id': res => res.json().response.id === id});
+    }
     trend[environment].add(res.timings.duration, { api: `${path}files/file/{id}`, status: res.status, method: res.request.method,});
 }
 
@@ -200,10 +200,9 @@ export function updateFile(id, params, trend, environment){
         headers: params.headers, 
         tags: addTagsDefault(true, 'Update file title'),
     });
-    check(res, {
-        'Update file status': res => res.status === 200,
-        'File title': res => res.json().response.title === fileTitle,
-    });
+    if(check(res, {'Update file status': res => res.status === 200})){
+        check(res, {'File title': res => res.json().response.title === fileTitle});
+    }
     trend[environment].add(res.timings.duration, { api: `${path}files/file/{id}`, status: res.status, method: res.request.method, });
 
 }

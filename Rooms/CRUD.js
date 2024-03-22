@@ -16,10 +16,9 @@ export function createRoom(params, trend, environment){
         headers: params.headers, 
         tags: addTagsDefault(true, 'Create new room'),
     });
-    check(res, {
-        'Cretion room status': res => res.status === 200,
-        'Room title': res => res.json().response.title === roomTitle,
-    });
+    if(check(res, {'Cretion room status': res => res.status === 200})){
+        check(res, {'Room title': res => res.json().response.title === roomTitle});
+    }
     trend[environment].add(res.timings.duration, { url: res.request.url, status: res.status, method: res.request.method,});
     return res.json().response.id;
 }
@@ -30,10 +29,9 @@ export function getRoomInfo(id, params, trend, environment){
         headers: params.headers, 
         tags: addTagsDefault(true, 'Get room info'),
     });
-    check(res, {
-        'Get room info status': res => res.status === 200,
-        'Room id': res => res.json().response.id === id,
-    });
+    if(check(res, {'Get room info status': res => res.status === 200})){
+        check(res, {'Room id': res => res.json().response.id === id});
+    }
     trend[environment].add(res.timings.duration, { url: res.request.url, status: res.status, method: res.request.method,});
 }
 
@@ -47,10 +45,9 @@ export function renameRoom(id, params, trend, environment){
         headers: params.headers, 
         tags: addTagsDefault(true, 'Rename room'),
     });
-    check(res, {
-        'Rename room status': res => res.status === 200,
-        'Room title': res => res.json().response.title === roomTitle,
-    });
+    if(check(res, {'Rename room status': res => res.status === 200})){
+        check(res, {'Room title': res => res.json().response.title === roomTitle});
+    }
     trend[environment].add(res.timings.duration, { url: res.request.url, status: res.status, method: res.request.method,});
 }
 

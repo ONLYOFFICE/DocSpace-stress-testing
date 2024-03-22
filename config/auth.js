@@ -9,9 +9,14 @@ export function auth() {
       }
     };
   
-    let res = http.get(url, params).json().response;
+    let res = http.get(url, params);
+    let response = null;
+
+    if(res.status === 200) {
+      response = res.json().response;
+    }
   
-    if(res.wizardToken) {
+    if(response.wizardToken) {
       url = wizardComplete;
       params = {
         headers: {
@@ -29,6 +34,10 @@ export function auth() {
     params = setParams(null);
     const payload = JSON.stringify(authData);
   
-    res = http.post(url, payload, params).json().response.token;
-    return res;
+    res = http.post(url, payload, params);
+    let token = null;
+    if(res.status === 200) {
+      token = res.json().response.token;
+    }
+    return token;
   }
